@@ -4,7 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Integra | Bienestar emocional</title>
+  <title>Integra Psicología | Bienestar emocional</title>
+
+  <meta name="description" content="Integra Psicología es un espacio profesional en Costa Rica enfocado en bienestar emocional, psicoterapia individual y talleres psicoeducativos.">
+  <meta name="theme-color" content="#073A4B">
+
+  <meta property="og:title" content="Integra Psicología | Bienestar emocional">
+  <meta property="og:description" content="Un espacio seguro, confidencial y profesional para acompañar tu proceso emocional.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://integra-psicologia.netlify.app">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,19 +23,27 @@
   <style>
     :root {
       --color-primary: #073A4B;
-      --color-primary-soft: #0F5C68;
-      --color-sage: #A8C3B5;
-      --color-sage-light: #D8E5DD;
-      --color-cream: #F7F4EF;
+      --color-primary-soft: #0C4B5D;
+      --color-primary-light: #2B6674;
+      --color-hover: #0F5C68;
+
       --color-white: #FFFFFF;
-      --color-dark: #24343A;
-      --color-muted: #6B7C80;
+      --color-bg-light: #F5F7F7;
+      --color-bg-soft: #EEF3F4;
+
+      --color-text: #24343A;
+      --color-text-soft: #61757B;
+
       --color-border: rgba(7, 58, 75, 0.12);
-      --shadow-soft: 0 18px 45px rgba(7, 58, 75, 0.10);
-      --shadow-hover: 0 28px 70px rgba(7, 58, 75, 0.16);
+      --color-border-light: rgba(255, 255, 255, 0.14);
+
+      --shadow-soft: 0 16px 40px rgba(7, 58, 75, 0.10);
+      --shadow-hover: 0 24px 60px rgba(7, 58, 75, 0.16);
+
       --radius-sm: 14px;
       --radius-md: 22px;
       --radius-lg: 34px;
+
       --transition: all 0.35s ease;
     }
 
@@ -43,8 +59,8 @@
 
     body {
       font-family: "DM Sans", sans-serif;
-      background: var(--color-cream);
-      color: var(--color-dark);
+      background: var(--color-bg-light);
+      color: var(--color-text);
       line-height: 1.7;
       overflow-x: hidden;
     }
@@ -60,12 +76,17 @@
     }
 
     p {
-      color: var(--color-muted);
+      color: var(--color-text-soft);
     }
 
     a {
       text-decoration: none;
       color: inherit;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
     }
 
     img {
@@ -86,8 +107,8 @@
       background: var(--color-white);
     }
 
-    .section-cream {
-      background: var(--color-cream);
+    .section-light {
+      background: var(--color-bg-light);
     }
 
     .eyebrow {
@@ -96,25 +117,41 @@
       gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(168, 195, 181, 0.28);
+      background: rgba(7, 58, 75, 0.08);
       color: var(--color-primary);
       font-weight: 700;
       font-size: 0.82rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       margin-bottom: 18px;
     }
 
     .section-title {
       font-size: clamp(2.2rem, 5vw, 4rem);
-      max-width: 760px;
+      max-width: 780px;
       margin-bottom: 18px;
     }
 
     .section-text {
       max-width: 720px;
       font-size: 1.07rem;
-      color: var(--color-muted);
+      color: var(--color-text-soft);
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -60px;
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: 10px 16px;
+      border-radius: 999px;
+      z-index: 5000;
+      transition: top 0.3s ease;
+    }
+
+    .skip-link:focus {
+      top: 16px;
     }
 
     /* NAVBAR */
@@ -122,10 +159,10 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(7, 58, 75, 0.82);
+      background: rgba(7, 58, 75, 0.88);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.10);
     }
 
     .nav-inner {
@@ -141,18 +178,28 @@
       align-items: center;
       gap: 12px;
       color: var(--color-white);
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      font-size: 1.18rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      font-size: 1.05rem;
+      text-transform: uppercase;
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      background: rgba(255, 255, 255, 0.08);
     }
 
     .brand-mark {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.30);
       background: rgba(255, 255, 255, 0.08);
-      display: grid;
+      display: none;
       place-items: center;
       color: var(--color-white);
     }
@@ -164,18 +211,34 @@
       list-style: none;
     }
 
-    .nav-links a {
-      color: rgba(255, 255, 255, 0.82);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: var(--transition);
-    }
+.nav-links a {
+  color: rgba(255, 255, 255, 0.86);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+.nav-links a.btn-primary {
+  background: var(--color-white);
+  color: var(--color-primary);
+  padding: 11px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+}
 
-    .nav-links a:hover {
+.nav-links a.btn-primary:hover,
+.nav-links a.btn-primary:focus {
+  background: #EEF3F4;
+  color: var(--color-primary);
+  transform: translateY(-2px);
+}
+    .nav-links a:hover,
+    .nav-links a:focus {
       background: rgba(255, 255, 255, 0.12);
       color: var(--color-white);
+      outline: none;
     }
 
     .menu-toggle {
@@ -208,25 +271,30 @@
     }
 
     .btn-primary {
-      background: var(--color-sage);
+      background: var(--color-white);
       color: var(--color-primary);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover,
+    .btn-primary:focus {
       transform: translateY(-3px);
-      background: #b8d1c5;
+      background: #EEF3F4;
       box-shadow: var(--shadow-hover);
+      outline: none;
     }
 
     .btn-dark {
       background: var(--color-primary);
       color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
-    .btn-dark:hover {
+    .btn-dark:hover,
+    .btn-dark:focus {
       transform: translateY(-3px);
-      background: var(--color-primary-soft);
+      background: var(--color-hover);
       box-shadow: var(--shadow-hover);
+      outline: none;
     }
 
     .btn-outline {
@@ -236,10 +304,12 @@
       box-shadow: none;
     }
 
-    .btn-outline:hover {
+    .btn-outline:hover,
+    .btn-outline:focus {
       background: var(--color-primary);
       color: var(--color-white);
       transform: translateY(-3px);
+      outline: none;
     }
 
     .btn-white {
@@ -247,9 +317,11 @@
       color: var(--color-primary);
     }
 
-    .btn-white:hover {
+    .btn-white:hover,
+    .btn-white:focus {
       transform: translateY(-3px);
-      background: var(--color-cream);
+      background: #EEF3F4;
+      outline: none;
     }
 
     /* HERO */
@@ -257,9 +329,9 @@
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(7, 58, 75, 0.96), rgba(15, 92, 104, 0.92)),
-        radial-gradient(circle at 20% 10%, rgba(168, 195, 181, 0.55), transparent 32%),
-        radial-gradient(circle at 90% 75%, rgba(247, 244, 239, 0.22), transparent 30%);
+        linear-gradient(135deg, rgba(7, 58, 75, 0.97), rgba(12, 75, 93, 0.94)),
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.08), transparent 28%),
+        radial-gradient(circle at 85% 80%, rgba(255, 255, 255, 0.06), transparent 30%);
       color: var(--color-white);
       padding: 128px 0 110px;
     }
@@ -268,9 +340,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.13;
+      opacity: 0.16;
       background-image:
-        url("data:image/svg+xml,%3Csvg width='900' height='700' viewBox='0 0 900 700' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M142 339C96 251 111 137 205 84c90-51 201 3 275 61 70 55 134 92 230 92 78 0 142 65 136 143-6 79-83 131-157 153-109 32-222-14-319 35-89 45-185 88-265 27-76-58-31-161 37-256Z' fill='none' stroke='%23FFFFFF' stroke-width='2'/%3E%3Cpath d='M268 242c72-98 215-118 302-47 88 72 94 215 13 307-80 91-217 111-306 41-90-71-81-204-9-301Z' fill='none' stroke='%23A8C3B5' stroke-width='2'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg width='900' height='700' viewBox='0 0 900 700' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M142 339C96 251 111 137 205 84c90-51 201 3 275 61 70 55 134 92 230 92 78 0 142 65 136 143-6 79-83 131-157 153-109 32-222-14-319 35-89 45-185 88-265 27-76-58-31-161 37-256Z' fill='none' stroke='%23FFFFFF' stroke-width='2'/%3E%3Cpath d='M268 242c72-98 215-118 302-47 88 72 94 215 13 307-80 91-217 111-306 41-90-71-81-204-9-301Z' fill='none' stroke='%23FFFFFF' stroke-width='2'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right -120px center;
       background-size: 820px;
@@ -280,26 +352,33 @@
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       align-items: center;
       gap: 58px;
     }
 
     .hero h1 {
       color: var(--color-white);
-      font-size: clamp(3.4rem, 8vw, 6.8rem);
+      font-size: clamp(3.2rem, 8vw, 6.4rem);
       margin-bottom: 20px;
+      letter-spacing: -0.02em;
     }
 
     .hero h1 span {
-      color: var(--color-sage);
+      color: rgba(255, 255, 255, 0.78);
     }
 
     .hero p {
       color: rgba(255, 255, 255, 0.82);
-      font-size: 1.16rem;
+      font-size: 1.12rem;
       max-width: 660px;
       margin-bottom: 32px;
+    }
+
+    .hero .eyebrow {
+      background: rgba(255, 255, 255, 0.10);
+      color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .hero-actions {
@@ -310,19 +389,29 @@
 
     .hero-card {
       position: relative;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: var(--radius-lg);
       padding: 34px;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
       backdrop-filter: blur(18px);
     }
 
+    .hero-logo-large {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
     .hero-card-icon {
       width: 68px;
       height: 68px;
       border-radius: 24px;
-      background: var(--color-sage);
+      background: var(--color-white);
       color: var(--color-primary);
       display: grid;
       place-items: center;
@@ -355,8 +444,9 @@
       padding: 9px 14px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.10);
-      color: rgba(255, 255, 255, 0.82);
+      color: rgba(255, 255, 255, 0.86);
       font-size: 0.92rem;
+      font-weight: 700;
       border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
@@ -370,8 +460,9 @@
 
     .organic-card {
       background:
-        radial-gradient(circle at 20% 20%, rgba(168, 195, 181, 0.70), transparent 34%),
-        linear-gradient(135deg, #F7F4EF, #FFFFFF);
+        radial-gradient(circle at 20% 20%, rgba(7, 58, 75, 0.12), transparent 34%),
+        radial-gradient(circle at 80% 75%, rgba(43, 102, 116, 0.12), transparent 28%),
+        linear-gradient(135deg, #F5F7F7, #FFFFFF);
       min-height: 480px;
       border-radius: var(--radius-lg);
       border: 1px solid var(--color-border);
@@ -380,6 +471,7 @@
       overflow: hidden;
       display: grid;
       place-items: center;
+      padding: 40px;
     }
 
     .organic-card::before {
@@ -399,9 +491,17 @@
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      border: 1px solid rgba(15, 92, 104, 0.18);
+      border: 1px solid rgba(7, 58, 75, 0.12);
       top: 70px;
       right: -40px;
+    }
+
+    .organic-card img {
+      width: 260px;
+      max-width: 80%;
+      border-radius: 28px;
+      z-index: 1;
+      box-shadow: var(--shadow-soft);
     }
 
     .organic-card i {
@@ -421,18 +521,18 @@
       display: flex;
       gap: 14px;
       align-items: flex-start;
-      padding: 16px;
+      padding: 18px;
       background: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      box-shadow: 0 10px 30px rgba(7, 58, 75, 0.06);
+      border: 1px solid rgba(7, 58, 75, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 10px 24px rgba(7, 58, 75, 0.05);
     }
 
     .feature-item i {
       color: var(--color-primary);
-      background: rgba(168, 195, 181, 0.40);
-      width: 36px;
-      height: 36px;
+      background: rgba(7, 58, 75, 0.08);
+      width: 38px;
+      height: 38px;
       border-radius: 12px;
       display: grid;
       place-items: center;
@@ -456,17 +556,17 @@
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
 
     .service-card {
       position: relative;
       background: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: 36px;
-      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(7, 58, 75, 0.10);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 12px 30px rgba(7, 58, 75, 0.08);
       transition: var(--transition);
       overflow: hidden;
     }
@@ -476,22 +576,34 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: 7px;
+      height: 6px;
       width: 100%;
-      background: linear-gradient(90deg, var(--color-sage), var(--color-primary-soft));
+      background: linear-gradient(90deg, #073A4B, #2B6674);
     }
 
     .service-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-hover);
-      border-color: rgba(7, 58, 75, 0.20);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(7, 58, 75, 0.14);
+      border-color: rgba(7, 58, 75, 0.16);
+    }
+
+    .service-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--color-primary);
+      color: var(--color-white);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
     }
 
     .service-icon {
       width: 72px;
       height: 72px;
       border-radius: 24px;
-      background: rgba(168, 195, 181, 0.35);
+      background: rgba(7, 58, 75, 0.08);
       color: var(--color-primary);
       display: grid;
       place-items: center;
@@ -502,11 +614,11 @@
 
     .service-card:hover .service-icon {
       transform: rotate(-3deg) scale(1.04);
-      background: var(--color-sage);
+      background: rgba(7, 58, 75, 0.12);
     }
 
     .service-card h3 {
-      font-size: 2.1rem;
+      font-size: 2rem;
       margin-bottom: 14px;
     }
 
@@ -518,7 +630,7 @@
     }
 
     .service-card li {
-      color: var(--color-muted);
+      color: var(--color-text-soft);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -531,8 +643,7 @@
     /* APPOINTMENT */
     .appointment {
       background:
-        linear-gradient(135deg, rgba(7, 58, 75, 0.96), rgba(15, 92, 104, 0.92)),
-        radial-gradient(circle at top left, rgba(168, 195, 181, 0.38), transparent 28%);
+        linear-gradient(135deg, rgba(7, 58, 75, 0.97), rgba(12, 75, 93, 0.94));
       color: var(--color-white);
     }
 
@@ -542,36 +653,67 @@
     }
 
     .appointment p {
-      color: rgba(255, 255, 255, 0.78);
+      color: rgba(255, 255, 255, 0.80);
+    }
+
+    .appointment .eyebrow {
+      background: rgba(255, 255, 255, 0.10);
+      color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .appointment-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 0.88fr 1.12fr;
       gap: 34px;
       align-items: start;
     }
 
     .info-card,
     .form-card {
-      background: rgba(255, 255, 255, 0.11);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 28px;
       padding: 32px;
-      backdrop-filter: blur(16px);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+    }
+
+    .steps-indicator {
+      display: flex;
+      gap: 10px;
+      margin: 22px 0;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.78);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .step.active {
+      background: var(--color-white);
+      color: var(--color-primary);
     }
 
     .process-box {
       background: var(--color-white);
       color: var(--color-primary);
-      border-radius: var(--radius-lg);
+      border-radius: 24px;
       padding: 26px;
       margin: 24px 0;
     }
 
+    .process-box p {
+      color: var(--color-text-soft);
+    }
+
     .process-label {
-      color: var(--color-muted);
+      color: var(--color-text-soft);
       font-size: 0.92rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -588,7 +730,7 @@
 
     .legal-note {
       font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.70);
+      color: rgba(255, 255, 255, 0.72);
       margin-top: 18px;
     }
 
@@ -618,13 +760,13 @@
     select {
       width: 100%;
       border: 1px solid rgba(255, 255, 255, 0.20);
-      border-radius: 18px;
+      border-radius: 16px;
       padding: 14px 16px;
       font-family: "DM Sans", sans-serif;
       font-size: 1rem;
       outline: none;
-      color: var(--color-dark);
-      background: rgba(255, 255, 255, 0.94);
+      color: var(--color-text);
+      background: rgba(255, 255, 255, 0.96);
       transition: var(--transition);
     }
 
@@ -636,13 +778,13 @@
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: var(--color-sage);
-      box-shadow: 0 0 0 4px rgba(168, 195, 181, 0.22);
+      border-color: rgba(255, 255, 255, 0.80);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.14);
     }
 
     .form-help {
       font-size: 0.84rem;
-      color: rgba(255, 255, 255, 0.68);
+      color: rgba(255, 255, 255, 0.72);
       margin-top: 6px;
     }
 
@@ -659,15 +801,139 @@
     }
 
     .alert-success {
-      background: rgba(168, 195, 181, 0.22);
+      background: rgba(255, 255, 255, 0.12);
       color: var(--color-white);
-      border: 1px solid rgba(168, 195, 181, 0.52);
+      border: 1px solid rgba(255, 255, 255, 0.22);
     }
 
     .alert-error {
       background: rgba(255, 255, 255, 0.13);
       color: #ffe5df;
       border: 1px solid rgba(255, 210, 200, 0.35);
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .testimonial-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .testimonial-card p {
+      font-family: "DM Serif Display", serif;
+      font-size: 1.55rem;
+      color: var(--color-primary);
+      line-height: 1.25;
+    }
+
+    .testimonial-card span {
+      display: block;
+      margin-top: 18px;
+      color: var(--color-text-soft);
+      font-weight: 700;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .faq-item {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      border: none;
+      background: transparent;
+      padding: 20px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "DM Sans", sans-serif;
+      font-weight: 700;
+      color: var(--color-primary);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-question i {
+      transition: var(--transition);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      padding: 0 22px;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 190px;
+      padding-bottom: 20px;
+    }
+
+    .faq-item.active .faq-question i {
+      transform: rotate(180deg);
+    }
+
+    /* RESOURCES */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .resource-card {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--color-border);
+      transition: var(--transition);
+    }
+
+    .resource-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .resource-image {
+      height: 180px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(7, 58, 75, 0.18), transparent 30%),
+        linear-gradient(135deg, var(--color-bg-soft), var(--color-white));
+    }
+
+    .resource-content {
+      padding: 24px;
+    }
+
+    .resource-content span {
+      color: var(--color-primary-light);
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .resource-content h3 {
+      margin: 10px 0;
+      font-size: 1.65rem;
     }
 
     /* CONTACT */
@@ -696,7 +962,7 @@
       width: 44px;
       height: 44px;
       border-radius: 16px;
-      background: rgba(168, 195, 181, 0.34);
+      background: rgba(7, 58, 75, 0.08);
       color: var(--color-primary);
       display: grid;
       place-items: center;
@@ -706,6 +972,45 @@
     .contact-item strong {
       color: var(--color-primary);
       display: block;
+    }
+
+    .map-card {
+      margin-top: 24px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .map-card iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      background: rgba(7, 58, 75, 0.08);
+      color: var(--color-primary);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover,
+    .social-links a:focus {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: translateY(-4px);
+      outline: none;
     }
 
     /* FOOTER */
@@ -740,8 +1045,10 @@
       gap: 10px;
     }
 
-    .footer a:hover {
-      color: var(--color-sage);
+    .footer a:hover,
+    .footer a:focus {
+      color: var(--color-white);
+      outline: none;
     }
 
     .footer-bottom {
@@ -751,7 +1058,7 @@
       justify-content: space-between;
       gap: 18px;
       flex-wrap: wrap;
-      color: rgba(255, 255, 255, 0.62);
+      color: rgba(255, 255, 255, 0.66);
       font-size: 0.9rem;
     }
 
@@ -799,7 +1106,7 @@
       height: 40px;
       border: none;
       border-radius: 50%;
-      background: var(--color-cream);
+      background: var(--color-bg-light);
       color: var(--color-primary);
       cursor: pointer;
       font-size: 1.2rem;
@@ -811,7 +1118,7 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: rgba(168, 195, 181, 0.35);
+      background: rgba(7, 58, 75, 0.08);
       color: var(--color-primary);
       font-size: 2rem;
       margin-bottom: 18px;
@@ -828,6 +1135,30 @@
       }
     }
 
+    /* WHATSAPP */
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      z-index: 3000;
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.20);
+      transition: var(--transition);
+    }
+
+    .whatsapp-float:hover,
+    .whatsapp-float:focus {
+      transform: translateY(-5px) scale(1.04);
+      outline: none;
+    }
+
     /* SCROLL ANIMATION */
     .reveal {
       opacity: 0;
@@ -841,6 +1172,14 @@
     }
 
     /* RESPONSIVE */
+    @media (max-width: 1050px) {
+      .services-grid,
+      .testimonial-grid,
+      .resources-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (max-width: 920px) {
       .menu-toggle {
         display: grid;
@@ -852,7 +1191,7 @@
         left: 18px;
         right: 18px;
         top: 88px;
-        background: rgba(7, 58, 75, 0.96);
+        background: rgba(7, 58, 75, 0.97);
         backdrop-filter: blur(18px);
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 24px;
@@ -887,7 +1226,9 @@
         align-items: flex-start;
       }
 
-      .services-grid {
+      .services-grid,
+      .testimonial-grid,
+      .resources-grid {
         grid-template-columns: 1fr;
       }
 
@@ -921,7 +1262,8 @@
       .info-card,
       .form-card,
       .service-card,
-      .contact-card {
+      .contact-card,
+      .testimonial-card {
         padding: 24px;
       }
 
@@ -932,23 +1274,41 @@
       .footer-bottom {
         flex-direction: column;
       }
+
+      .whatsapp-float {
+        width: 54px;
+        height: 54px;
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .brand span:last-child {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 
 <body>
+  <a href="#inicio" class="skip-link">Saltar al contenido principal</a>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Navegación principal">
     <div class="container nav-inner">
       <a href="#inicio" class="brand">
+        <img
+          src="img/logo-integra.png"
+          alt="Logo de Integra Psicología"
+          class="brand-logo"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+        >
         <span class="brand-mark">
           <i class="bi bi-heart-pulse"></i>
         </span>
-        Integra
+        <span>Integra</span>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú de navegación">
         <i class="bi bi-list"></i>
       </button>
 
@@ -957,6 +1317,7 @@
         <li><a href="#sobre">Sobre Integra</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#agendar">Agenda tu cita</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacto">Contacto</a></li>
         <li><a href="#agendar" class="btn btn-primary">Agenda tu cita</a></li>
       </ul>
@@ -964,103 +1325,124 @@
   </nav>
 
   <!-- HERO -->
-  <header class="hero" id="inicio">
-    <div class="container hero-grid">
-      <div class="reveal">
-        <span class="eyebrow">
-          <i class="bi bi-shield-check"></i>
-          Atención psicológica profesional
-        </span>
+  <main id="inicio">
+    <header class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">
+            <i class="bi bi-shield-check"></i>
+            Espacio seguro · Confidencial · Profesional
+          </span>
 
-        <h1>Integra <span>|</span> Bienestar emocional</h1>
+          <h1>Un espacio para ti, <span>sin juicios.</span></h1>
 
-        <p>
-          Un espacio sereno, confidencial y profesional para acompañar tus procesos emocionales,
-          fortalecer recursos personales y promover una vida con mayor equilibrio.
-        </p>
+          <p>
+            En Integra encuentras un espacio cálido, seguro y profesional para iniciar
+            tu proceso emocional a tu ritmo. Te acompañamos con empatía, respeto y
+            confidencialidad.
+          </p>
 
-        <div class="hero-actions">
-          <a href="#agendar" class="btn btn-primary">
-            <i class="bi bi-calendar-check"></i>
-            Agenda tu cita
-          </a>
-          <a href="#servicios" class="btn btn-white">
-            Conocer servicios
-          </a>
-        </div>
-
-        <div class="trust-row">
-          <span class="trust-pill"><i class="bi bi-lock"></i> Confidencialidad</span>
-          <span class="trust-pill"><i class="bi bi-person-heart"></i> Trato humano</span>
-          <span class="trust-pill"><i class="bi bi-flower1"></i> Bienestar integral</span>
-        </div>
-      </div>
-
-      <div class="hero-card reveal">
-        <div class="hero-card-icon">
-          <i class="bi bi-brightness-alt-high"></i>
-        </div>
-        <h3>Acompañamiento con calma, respeto y confianza</h3>
-        <p>
-          En Integra cada proceso es abordado desde la escucha, la empatía y el cuidado ético,
-          evitando juicios y priorizando el bienestar emocional de cada persona.
-        </p>
-      </div>
-    </div>
-  </header>
-
-  <!-- ABOUT -->
-  <section class="section section-white" id="sobre">
-    <div class="container about-grid">
-      <div class="organic-card reveal">
-        <i class="bi bi-person-heart"></i>
-      </div>
-
-      <div class="reveal">
-        <span class="eyebrow">
-          <i class="bi bi-leaf"></i>
-          Sobre Integra
-        </span>
-
-        <h2 class="section-title">Un espacio clínico cercano para cuidar tu salud emocional</h2>
-
-        <p class="section-text">
-          Integra nace con el propósito de acompañar procesos psicológicos desde una mirada
-          profesional, ética y humana. Nuestro enfoque busca promover herramientas de autocuidado,
-          regulación emocional y fortalecimiento personal.
-        </p>
-
-        <div class="feature-list">
-          <div class="feature-item">
-            <i class="bi bi-check2-circle"></i>
-            <div>
-              <strong>Atención confidencial</strong>
-              <p>Un espacio seguro para expresar lo que estás viviendo con respeto y privacidad.</p>
-            </div>
+          <div class="hero-actions">
+            <a href="#agendar" class="btn btn-primary">
+              <i class="bi bi-calendar-check"></i>
+              Agenda tu cita
+            </a>
+            <a href="#servicios" class="btn btn-white">
+              Conoce los servicios
+            </a>
           </div>
 
-          <div class="feature-item">
-            <i class="bi bi-check2-circle"></i>
-            <div>
-              <strong>Acompañamiento personalizado</strong>
-              <p>Cada proceso se adapta a tus necesidades, contexto y ritmo personal.</p>
-            </div>
+          <div class="trust-row">
+            <span class="trust-pill"><i class="bi bi-lock"></i> Espacio seguro</span>
+            <span class="trust-pill"><i class="bi bi-shield-check"></i> Confidencial</span>
+            <span class="trust-pill"><i class="bi bi-person-heart"></i> Profesional</span>
+          </div>
+        </div>
+
+        <div class="hero-card reveal">
+          <img
+            src="img/logo-integra.png"
+            alt="Logo de Integra"
+            class="hero-logo-large"
+            onerror="this.style.display='none';"
+          >
+
+          <div class="hero-card-icon">
+            <i class="bi bi-flower1"></i>
           </div>
 
-          <div class="feature-item">
-            <i class="bi bi-check2-circle"></i>
-            <div>
-              <strong>Bienestar integral</strong>
-              <p>Promovemos herramientas prácticas para fortalecer tu equilibrio emocional.</p>
+          <h3>Tu proceso, a tu ritmo.</h3>
+          <p>
+            Hablar de lo que sientes puede ser el primer paso para entenderte mejor.
+            Aquí puedes hacerlo con calma, respeto y acompañamiento profesional.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- SOBRE INTEGRA -->
+    <section class="section section-white" id="sobre">
+      <div class="container about-grid">
+        <div class="organic-card reveal" aria-label="Ilustración de bienestar emocional">
+          <img
+            src="img/logo-integra.png"
+            alt="Identidad visual de Integra Psicología"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          >
+          <i class="bi bi-person-heart" style="display:none;"></i>
+        </div>
+
+        <div class="reveal">
+          <span class="eyebrow">
+            <i class="bi bi-leaf"></i>
+            Sobre Integra
+          </span>
+
+          <h2 class="section-title">Acompañamiento humano para cuidar tu salud emocional.</h2>
+
+          <p class="section-text">
+            Integra nace como un espacio de acompañamiento psicológico donde cada persona
+            puede sentirse escuchada, respetada y acompañada. Pedir ayuda no es una señal
+            de debilidad, sino una forma valiente de cuidarse.
+          </p>
+
+          <p class="section-text">
+            Nuestro enfoque se basa en la empatía, la ética profesional y la confidencialidad,
+            ofreciendo herramientas prácticas para fortalecer el bienestar emocional.
+          </p>
+
+          <div class="feature-list">
+            <div class="feature-item">
+              <i class="bi bi-heart"></i>
+              <div>
+                <strong>Empatía</strong>
+                <p>Escuchamos tu historia con respeto, sin juicios y con sensibilidad humana.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <i class="bi bi-shield-lock"></i>
+              <div>
+                <strong>Ética profesional</strong>
+                <p>Cuidamos cada proceso con responsabilidad, claridad y compromiso.</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <i class="bi bi-lock"></i>
+              <div>
+                <strong>Confidencialidad</strong>
+                <p>Tu información y tu proceso se manejan con privacidad y respeto.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- SERVICES -->
-  <section class="section section-cream" id="servicios">
+  <!-- SERVICIOS -->
+  <section class="section section-light" id="servicios">
     <div class="container">
       <div class="services-header reveal">
         <div>
@@ -1068,28 +1450,28 @@
             <i class="bi bi-stars"></i>
             Servicios
           </span>
-          <h2 class="section-title">Acompañamiento psicológico para distintas necesidades</h2>
+          <h2 class="section-title">¿No sabes por dónde empezar?</h2>
         </div>
         <p class="section-text">
-          Servicios diseñados para promover el bienestar emocional, el autocuidado y el crecimiento personal.
+          Estos espacios están diseñados para acompañarte de forma cercana, clara y profesional.
         </p>
       </div>
 
       <div class="services-grid">
         <article class="service-card reveal">
+          <span class="service-badge">Más solicitado</span>
           <div class="service-icon">
             <i class="bi bi-person-heart"></i>
           </div>
-          <h3>Psicoterapia</h3>
+          <h3>Psicoterapia individual</h3>
           <p>
-            Acompañamiento psicológico individual orientado a brindar apoyo emocional,
-            fortalecer recursos personales y trabajar dificultades relacionadas con ansiedad,
-            estrés, autoestima, duelo o relaciones interpersonales.
+            Un espacio de acompañamiento para trabajar ansiedad, estrés, autoestima,
+            duelo, relaciones interpersonales u otros procesos personales.
           </p>
           <ul>
-            <li><i class="bi bi-check-circle"></i> Atención individual</li>
-            <li><i class="bi bi-check-circle"></i> Modalidad presencial o virtual</li>
-            <li><i class="bi bi-check-circle"></i> Espacio seguro y confidencial</li>
+            <li><i class="bi bi-check-circle"></i> Duración: 50 minutos</li>
+            <li><i class="bi bi-check-circle"></i> Modalidad: presencial o virtual</li>
+            <li><i class="bi bi-check-circle"></i> Precio: consultar</li>
           </ul>
           <a href="#agendar" class="btn btn-dark">Agendar cita</a>
         </article>
@@ -1101,20 +1483,37 @@
           <h3>Talleres psicoeducativos</h3>
           <p>
             Espacios grupales de aprendizaje y reflexión sobre salud mental, autocuidado,
-            manejo emocional, comunicación, estrés, autoestima y bienestar integral.
+            manejo emocional, comunicación, estrés y bienestar integral.
           </p>
           <ul>
-            <li><i class="bi bi-check-circle"></i> Aprendizaje práctico</li>
-            <li><i class="bi bi-check-circle"></i> Espacios grupales</li>
-            <li><i class="bi bi-check-circle"></i> Temas de bienestar emocional</li>
+            <li><i class="bi bi-check-circle"></i> Duración: según taller</li>
+            <li><i class="bi bi-check-circle"></i> Modalidad: grupal o institucional</li>
+            <li><i class="bi bi-check-circle"></i> Precio: consultar</li>
           </ul>
           <a href="#contacto" class="btn btn-outline">Solicitar información</a>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <i class="bi bi-chat-heart"></i>
+          </div>
+          <h3>Primera consulta</h3>
+          <p>
+            Una primera conversación para conocer tu situación general, aclarar dudas
+            y definir juntos cómo iniciar tu proceso.
+          </p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> Orientación inicial</li>
+            <li><i class="bi bi-check-circle"></i> Modalidad: presencial, virtual o teléfono</li>
+            <li><i class="bi bi-check-circle"></i> Precio: consultar</li>
+          </ul>
+          <a href="#agendar" class="btn btn-dark">Da el primer paso</a>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- APPOINTMENT -->
+  <!-- AGENDA -->
   <section class="section appointment" id="agendar">
     <div class="container appointment-grid">
       <div class="info-card reveal">
@@ -1123,7 +1522,7 @@
           Agenda tu cita
         </span>
 
-        <h2 class="section-title">Solicita tu espacio de atención</h2>
+        <h2 class="section-title">Tu información es confidencial.</h2>
 
         <p>
           Completa el formulario con tus datos básicos y nos pondremos en contacto
@@ -1153,8 +1552,34 @@
           Ingresa tus datos básicos. Te contactaremos para confirmar la cita.
         </p>
 
+        <div class="steps-indicator" aria-label="Pasos del formulario">
+          <span class="step active">1. Servicio</span>
+          <span class="step active">2. Datos</span>
+          <span class="step active">3. Confirmación</span>
+        </div>
+
         <form id="appointmentForm">
           <div class="form-grid">
+            <div class="form-group">
+              <label for="service">Tipo de servicio</label>
+              <select id="service" name="service" required>
+                <option value="">Seleccione una opción</option>
+                <option value="Psicoterapia individual">Psicoterapia individual</option>
+                <option value="Taller psicoeducativo">Taller psicoeducativo</option>
+                <option value="Primera consulta">Primera consulta</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="modality">Modalidad</label>
+              <select id="modality" name="modality" required>
+                <option value="">Seleccione una opción</option>
+                <option value="Presencial">Presencial</option>
+                <option value="Virtual">Virtual</option>
+                <option value="Teléfono">Teléfono</option>
+              </select>
+            </div>
+
             <div class="form-group">
               <label for="name">Nombre completo</label>
               <input type="text" id="name" name="name" placeholder="Tu nombre completo" required>
@@ -1168,24 +1593,6 @@
             <div class="form-group">
               <label for="phone">Teléfono</label>
               <input type="tel" id="phone" name="phone" placeholder="+506 8888-8888" required>
-            </div>
-
-            <div class="form-group">
-              <label for="service">Tipo de servicio</label>
-              <select id="service" name="service" required>
-                <option value="">Seleccione una opción</option>
-                <option value="Psicoterapia">Psicoterapia</option>
-                <option value="Taller psicoeducativo">Taller psicoeducativo</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="modality">Modalidad</label>
-              <select id="modality" name="modality" required>
-                <option value="">Seleccione una opción</option>
-                <option value="Presencial">Presencial</option>
-                <option value="Virtual">Virtual</option>
-              </select>
             </div>
 
             <div class="form-group">
@@ -1204,23 +1611,147 @@
 
           <button type="submit" class="btn btn-primary" style="margin-top: 22px;">
             <i class="bi bi-send"></i>
-            Enviar solicitud de cita
+            Da el primer paso
           </button>
 
           <div class="alert alert-error" id="errorAlert">
-            Por favor complete los campos obligatorios.
+            Parece que falta algo aquí. Revisa los campos obligatorios.
           </div>
 
           <div class="alert alert-success" id="successAlert">
-            Solicitud enviada correctamente. Te contactaremos para confirmar el horario.
+            ¡Listo! Te contactaremos pronto.
           </div>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section class="section section-white" id="contacto">
+  <!-- TESTIMONIOS -->
+  <section class="section section-white" id="testimonios">
+    <div class="container">
+      <span class="eyebrow">
+        <i class="bi bi-chat-quote"></i>
+        Testimonios anónimos
+      </span>
+
+      <h2 class="section-title">Procesos que dejan huella.</h2>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card reveal">
+          <p>“El proceso me ayudó a entenderme mejor y a tratarme con más calma.”</p>
+          <span>Paciente anónimo</span>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <p>“Encontré un espacio donde pude hablar sin sentirme juzgada.”</p>
+          <span>Paciente anónimo</span>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <p>“Aprendí herramientas que sigo usando en mi día a día.”</p>
+          <span>Paciente anónimo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-light" id="faq">
+    <div class="container">
+      <span class="eyebrow">
+        <i class="bi bi-question-circle"></i>
+        Preguntas frecuentes
+      </span>
+
+      <h2 class="section-title">Hablemos de tus dudas.</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            ¿Cuánto dura una sesión?
+            <i class="bi bi-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Generalmente una sesión tiene una duración aproximada de 50 minutos.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            ¿Es confidencial?
+            <i class="bi bi-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Sí. Tu información y tu proceso se manejan con respeto, privacidad y confidencialidad.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            ¿Qué pasa en la primera consulta?
+            <i class="bi bi-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>La primera consulta permite conocer tu situación general, aclarar dudas y definir juntos cómo iniciar el proceso.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" type="button">
+            ¿Puedo recibir atención virtual?
+            <i class="bi bi-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Sí. Puedes solicitar atención virtual, presencial o por teléfono, según disponibilidad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECURSOS -->
+  <section class="section section-white" id="recursos">
+    <div class="container">
+      <span class="eyebrow">
+        <i class="bi bi-journal-text"></i>
+        Recursos
+      </span>
+
+      <h2 class="section-title">Pequeñas herramientas para cuidarte.</h2>
+
+      <div class="resources-grid">
+        <article class="resource-card reveal">
+          <div class="resource-image" aria-label="Imagen decorativa sobre autocuidado emocional"></div>
+          <div class="resource-content">
+            <span>4 min de lectura</span>
+            <h3>Cómo empezar a practicar el autocuidado emocional</h3>
+            <p>Ideas sencillas para escucharte mejor y atender tus necesidades emocionales.</p>
+          </div>
+        </article>
+
+        <article class="resource-card reveal">
+          <div class="resource-image" aria-label="Imagen decorativa sobre respiración consciente"></div>
+          <div class="resource-content">
+            <span>3 min de lectura</span>
+            <h3>Respirar para volver al presente</h3>
+            <p>Una técnica breve de respiración para momentos de tensión o ansiedad.</p>
+          </div>
+        </article>
+
+        <article class="resource-card reveal">
+          <div class="resource-image" aria-label="Imagen decorativa sobre acompañamiento psicológico"></div>
+          <div class="resource-content">
+            <span>5 min de lectura</span>
+            <h3>¿Cuándo pedir acompañamiento psicológico?</h3>
+            <p>Señales cotidianas que pueden indicar que necesitas un espacio de apoyo.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="section section-light" id="contacto">
     <div class="container contact-grid">
       <div class="contact-card reveal">
         <span class="eyebrow">
@@ -1228,12 +1759,20 @@
           Contacto
         </span>
 
-        <h2 class="section-title">Estamos para orientarte</h2>
+        <h2 class="section-title">Hablemos.</h2>
 
         <p>
           Puedes escribir para recibir más información sobre servicios, disponibilidad
           o modalidad de atención.
         </p>
+
+        <div class="map-card">
+          <iframe
+            title="Ubicación general de Integra en Costa Rica"
+            src="https://www.google.com/maps?q=Costa%20Rica&output=embed"
+            loading="lazy">
+          </iframe>
+        </div>
       </div>
 
       <div class="contact-card reveal">
@@ -1268,6 +1807,12 @@
             <p>Lunes a viernes, 8:00 a.m. - 5:00 p.m.</p>
           </div>
         </div>
+
+        <div class="social-links">
+          <a href="#" aria-label="Instagram de Integra"><i class="bi bi-instagram"></i></a>
+          <a href="#" aria-label="Facebook de Integra"><i class="bi bi-facebook"></i></a>
+          <a href="https://wa.me/50688888888" target="_blank" aria-label="WhatsApp de Integra"><i class="bi bi-whatsapp"></i></a>
+        </div>
       </div>
     </div>
   </section>
@@ -1278,14 +1823,19 @@
       <div class="footer-grid">
         <div>
           <div class="brand" style="margin-bottom: 18px;">
+            <img
+              src="img/logo-integra.png"
+              alt="Logo de Integra Psicología"
+              class="brand-logo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+            >
             <span class="brand-mark">
               <i class="bi bi-heart-pulse"></i>
             </span>
-            Integra
+            <span>Integra</span>
           </div>
           <p>
-            Acompañamiento psicológico profesional para promover bienestar emocional,
-            autocuidado y equilibrio personal.
+            Cuidar tu mente también es cuidarte.
           </p>
         </div>
 
@@ -1302,9 +1852,9 @@
         <div>
           <h4>Servicios</h4>
           <ul>
-            <li><a href="#servicios">Psicoterapia</a></li>
+            <li><a href="#servicios">Psicoterapia individual</a></li>
             <li><a href="#servicios">Talleres psicoeducativos</a></li>
-            <li><a href="#agendar">Solicitud de cita</a></li>
+            <li><a href="#servicios">Primera consulta</a></li>
           </ul>
         </div>
 
@@ -1317,16 +1867,16 @@
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Integra. Todos los derechos reservados.</span>
+        <span>© 2026 Integra Psicología. Todos los derechos reservados.</span>
         <span>La información del sitio no sustituye una valoración psicológica profesional.</span>
       </div>
     </div>
   </footer>
 
-  <!-- SUCCESS MODAL -->
+  <!-- MODAL -->
   <div class="modal-backdrop" id="successModal">
-    <div class="modal">
-      <button class="modal-close" id="closeModal" aria-label="Cerrar modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="Cerrar mensaje de confirmación">
         <i class="bi bi-x-lg"></i>
       </button>
 
@@ -1334,10 +1884,10 @@
         <i class="bi bi-check2"></i>
       </div>
 
-      <h3>Solicitud enviada correctamente</h3>
+      <h3 id="modalTitle">Solicitud enviada correctamente</h3>
       <p>
-        Te contactaremos para confirmar disponibilidad, modalidad y horario.
-        Gracias por confiar en Integra.
+        Recibimos tu solicitud. Te contactaremos para confirmar disponibilidad,
+        modalidad y horario.
       </p>
 
       <button class="btn btn-dark" id="modalOk">
@@ -1345,6 +1895,16 @@
       </button>
     </div>
   </div>
+
+  <!-- WHATSAPP FLOAT -->
+  <a
+    href="https://wa.me/50688888888?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Integra"
+    class="whatsapp-float"
+    target="_blank"
+    aria-label="Agendar cita por WhatsApp"
+  >
+    <i class="bi bi-whatsapp"></i>
+  </a>
 
   <script>
     const menuToggle = document.getElementById("menuToggle");
@@ -1366,9 +1926,6 @@
       });
     });
 
-    /*
-      Animación al hacer scroll
-    */
     const revealElements = document.querySelectorAll(".reveal");
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -1384,28 +1941,32 @@
 
     revealElements.forEach(element => revealObserver.observe(element));
 
-    /*
-      Validación del formulario de agenda
-    */
+    document.querySelectorAll(".faq-question").forEach(button => {
+      button.addEventListener("click", () => {
+        const item = button.parentElement;
+        item.classList.toggle("active");
+      });
+    });
+
     appointmentForm.addEventListener("submit", function(event) {
       event.preventDefault();
 
       const formData = {
+        service: document.getElementById("service").value.trim(),
+        modality: document.getElementById("modality").value.trim(),
         name: document.getElementById("name").value.trim(),
         email: document.getElementById("email").value.trim(),
         phone: document.getElementById("phone").value.trim(),
-        service: document.getElementById("service").value.trim(),
-        modality: document.getElementById("modality").value.trim(),
         datetime: document.getElementById("datetime").value.trim(),
         reason: document.getElementById("reason").value.trim()
       };
 
       const isValid =
+        formData.service &&
+        formData.modality &&
         formData.name &&
         formData.email &&
         formData.phone &&
-        formData.service &&
-        formData.modality &&
         formData.datetime;
 
       if (!isValid) {
@@ -1417,10 +1978,6 @@
       errorAlert.classList.remove("show");
       successAlert.classList.add("show");
 
-      /*
-        Por ahora esto simula el envío correctamente.
-        Luego se puede conectar con fetch() al backend para guardar la cita.
-      */
       console.log("Solicitud de cita:", formData);
 
       appointmentForm.reset();
