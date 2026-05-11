@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Integra Psicología | Bienestar emocional</title>
+  <title>Integra Psicoterapia | Bienestar emocional</title>
 
-  <meta name="description" content="Integra Psicología es un espacio profesional en Costa Rica enfocado en bienestar emocional, psicoterapia individual y talleres psicoeducativos.">
+  <meta name="description" content="Integra Psicoterapia brinda acompañamiento psicoterapéutico a personas adolescentes y adultas en Costa Rica. Atención presencial en San Ramón de Alajuela y San Pedro de Montes de Oca, además de modalidad virtual.">
   <meta name="theme-color" content="#073A4B">
 
-  <meta property="og:title" content="Integra Psicología | Bienestar emocional">
-  <meta property="og:description" content="Un espacio seguro, confidencial y profesional para acompañar tu proceso emocional.">
+  <meta property="og:title" content="Integra Psicoterapia | Bienestar emocional">
+  <meta property="og:description" content="Acompañamiento psicoterapéutico para personas adolescentes y adultas. Espacio seguro, confidencial y profesional.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://integra-psicologia.netlify.app">
 
@@ -211,34 +211,36 @@
       list-style: none;
     }
 
-.nav-links a {
-  color: rgba(255, 255, 255, 0.86);
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: var(--transition);
-}
-.nav-links a.btn-primary {
-  background: var(--color-white);
-  color: var(--color-primary);
-  padding: 11px 22px;
-  border-radius: 999px;
-  font-weight: 700;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
-}
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.86);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
 
-.nav-links a.btn-primary:hover,
-.nav-links a.btn-primary:focus {
-  background: #EEF3F4;
-  color: var(--color-primary);
-  transform: translateY(-2px);
-}
     .nav-links a:hover,
     .nav-links a:focus {
       background: rgba(255, 255, 255, 0.12);
       color: var(--color-white);
       outline: none;
+    }
+
+    .nav-links a.btn-primary {
+      background: var(--color-white);
+      color: var(--color-primary);
+      padding: 11px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-links a.btn-primary:hover,
+    .nav-links a.btn-primary:focus {
+      background: #EEF3F4;
+      color: var(--color-primary);
+      transform: translateY(-2px);
     }
 
     .menu-toggle {
@@ -509,6 +511,35 @@
       color: var(--color-primary);
       opacity: 0.86;
       z-index: 1;
+    }
+
+    .professional-card {
+      margin-top: 26px;
+      background: var(--color-white);
+      border: 1px solid rgba(7, 58, 75, 0.10);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(7, 58, 75, 0.08);
+    }
+
+    .professional-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .professional-card p {
+      margin-bottom: 6px;
+    }
+
+    .professional-card span {
+      display: inline-flex;
+      margin-top: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(7, 58, 75, 0.08);
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: 0.9rem;
     }
 
     .feature-list {
@@ -1237,53 +1268,400 @@
       }
     }
 
-    @media (max-width: 620px) {
+    @media (max-width: 768px) {
+      body {
+        font-size: 15px;
+      }
+
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
       .section {
-        padding: 78px 0;
+        padding: 64px 0;
+      }
+
+      .section-title {
+        font-size: 2.25rem;
+        line-height: 1.08;
+        margin-bottom: 16px;
+      }
+
+      .section-text {
+        font-size: 1rem;
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .brand {
+        gap: 10px;
+        font-size: 0.95rem;
+        letter-spacing: 0.05em;
+      }
+
+      .brand-logo {
+        width: 40px;
+        height: 40px;
+      }
+
+      .brand-mark {
+        width: 40px;
+        height: 40px;
+      }
+
+      .menu-toggle {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+      }
+
+      .nav-links {
+        top: 78px;
+        left: 14px;
+        right: 14px;
+        padding: 14px;
+        gap: 6px;
+        border-radius: 20px;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 12px 14px;
+        text-align: center;
+        font-size: 0.95rem;
+      }
+
+      .nav-links a.btn-primary {
+        width: 100%;
+        margin-top: 8px;
+        padding: 13px 16px;
+        background: var(--color-white);
+        color: var(--color-primary);
+      }
+
+      .hero {
+        padding: 78px 0 66px;
+        text-align: center;
+      }
+
+      .hero-grid {
+        gap: 34px;
       }
 
       .hero h1 {
-        font-size: 3.4rem;
+        font-size: 3rem;
+        line-height: 1.02;
+        margin-bottom: 18px;
       }
 
-      .hero-actions,
-      .trust-row {
+      .hero p {
+        font-size: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 26px;
+      }
+
+      .hero-actions {
         flex-direction: column;
+        width: 100%;
       }
 
-      .btn {
+      .hero-actions .btn {
         width: 100%;
+      }
+
+      .trust-row {
+        justify-content: center;
+        gap: 10px;
+        margin-top: 26px;
+      }
+
+      .trust-pill {
+        font-size: 0.86rem;
+        padding: 8px 12px;
+      }
+
+      .hero-card {
+        padding: 24px;
+        border-radius: 24px;
+        text-align: left;
+      }
+
+      .hero-logo-large {
+        width: 110px;
+        height: 110px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-card-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
+        font-size: 1.4rem;
+      }
+
+      .hero-card h3 {
+        font-size: 1.75rem;
+      }
+
+      .about-grid {
+        gap: 34px;
+      }
+
+      .organic-card {
+        min-height: 300px;
+        padding: 28px;
+        border-radius: 24px;
+      }
+
+      .organic-card img {
+        width: 190px;
+      }
+
+      .feature-item {
+        padding: 16px;
+        border-radius: 18px;
+      }
+
+      .feature-item i {
+        width: 34px;
+        height: 34px;
+      }
+
+      .professional-card {
+        padding: 20px;
+      }
+
+      .professional-card h3 {
+        font-size: 1.55rem;
+      }
+
+      .services-header {
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+
+      .services-grid {
+        gap: 18px;
+      }
+
+      .service-card {
+        padding: 24px;
+        border-radius: 24px;
+      }
+
+      .service-card h3 {
+        font-size: 1.75rem;
+      }
+
+      .service-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        font-size: 1.45rem;
+      }
+
+      .service-badge {
+        top: 14px;
+        right: 14px;
+        font-size: 0.72rem;
+        padding: 6px 10px;
+      }
+
+      .service-card .btn {
+        width: 100%;
+      }
+
+      .appointment-grid {
+        gap: 24px;
+      }
+
+      .info-card,
+      .form-card {
+        padding: 24px;
+        border-radius: 24px;
+      }
+
+      .process-box {
+        padding: 22px;
+        border-radius: 20px;
+      }
+
+      .process-title {
+        font-size: 2.1rem;
+      }
+
+      .steps-indicator {
+        gap: 8px;
+      }
+
+      .step {
+        font-size: 0.78rem;
+        padding: 8px 10px;
       }
 
       .form-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
       }
 
-      .info-card,
-      .form-card,
-      .service-card,
-      .contact-card,
+      input,
+      textarea,
+      select {
+        padding: 13px 14px;
+        border-radius: 14px;
+        font-size: 0.95rem;
+      }
+
+      textarea {
+        min-height: 110px;
+      }
+
+      .form-card .btn {
+        width: 100%;
+      }
+
+      .testimonial-grid {
+        gap: 18px;
+      }
+
       .testimonial-card {
         padding: 24px;
+        border-radius: 24px;
+      }
+
+      .testimonial-card p {
+        font-size: 1.35rem;
+      }
+
+      .faq-question {
+        padding: 18px;
+        font-size: 0.96rem;
+      }
+
+      .faq-answer {
+        padding: 0 18px;
+      }
+
+      .faq-item.active .faq-answer {
+        padding-bottom: 18px;
+      }
+
+      .resources-grid {
+        gap: 18px;
+      }
+
+      .resource-card {
+        border-radius: 24px;
+      }
+
+      .resource-image {
+        height: 150px;
+      }
+
+      .resource-content {
+        padding: 22px;
+      }
+
+      .resource-content h3 {
+        font-size: 1.45rem;
+      }
+
+      .contact-grid {
+        gap: 18px;
+      }
+
+      .contact-card {
+        padding: 24px;
+        border-radius: 24px;
+      }
+
+      .contact-item {
+        gap: 12px;
+      }
+
+      .contact-item i {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+      }
+
+      .map-card iframe {
+        height: 220px;
+      }
+
+      .footer {
+        padding: 56px 0 24px;
       }
 
       .footer-grid {
-        grid-template-columns: 1fr;
+        gap: 28px;
       }
 
       .footer-bottom {
-        flex-direction: column;
+        gap: 10px;
+        font-size: 0.85rem;
       }
 
       .whatsapp-float {
-        width: 54px;
-        height: 54px;
+        width: 52px;
+        height: 52px;
         right: 16px;
         bottom: 16px;
+        font-size: 1.55rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .hero h1 {
+        font-size: 2.55rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
       }
 
       .brand span:last-child {
-        font-size: 0.9rem;
+        font-size: 0.82rem;
+      }
+
+      .nav-links {
+        left: 12px;
+        right: 12px;
+      }
+
+      .trust-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .trust-pill {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-card,
+      .service-card,
+      .info-card,
+      .form-card,
+      .contact-card,
+      .testimonial-card {
+        padding: 20px;
+      }
+
+      .process-title {
+        font-size: 1.85rem;
+      }
+
+      .footer h4 {
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -1298,7 +1676,7 @@
       <a href="#inicio" class="brand">
         <img
           src="img/logo-integra.png"
-          alt="Logo de Integra Psicología"
+          alt="Logo de Integra Psicoterapia"
           class="brand-logo"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
         >
@@ -1334,12 +1712,12 @@
             Espacio seguro · Confidencial · Profesional
           </span>
 
-          <h1>Un espacio para ti, <span>sin juicios.</span></h1>
+          <h1>Acompañamiento psicoterapéutico <span>para tu bienestar.</span></h1>
 
           <p>
-            En Integra encuentras un espacio cálido, seguro y profesional para iniciar
-            tu proceso emocional a tu ritmo. Te acompañamos con empatía, respeto y
-            confidencialidad.
+            Atención psicológica para personas adolescentes y adultas, en un espacio
+            seguro, confidencial y profesional. Atención presencial en San Ramón de Alajuela
+            y San Pedro de Montes de Oca, además de modalidad virtual.
           </p>
 
           <div class="hero-actions">
@@ -1353,9 +1731,9 @@
           </div>
 
           <div class="trust-row">
-            <span class="trust-pill"><i class="bi bi-lock"></i> Espacio seguro</span>
-            <span class="trust-pill"><i class="bi bi-shield-check"></i> Confidencial</span>
-            <span class="trust-pill"><i class="bi bi-person-heart"></i> Profesional</span>
+            <span class="trust-pill"><i class="bi bi-lock"></i> Confidencial</span>
+            <span class="trust-pill"><i class="bi bi-person-heart"></i> Adolescentes y adultos</span>
+            <span class="trust-pill"><i class="bi bi-camera-video"></i> Modalidad virtual</span>
           </div>
         </div>
 
@@ -1373,7 +1751,7 @@
 
           <h3>Tu proceso, a tu ritmo.</h3>
           <p>
-            Hablar de lo que sientes puede ser el primer paso para entenderte mejor.
+            Hablar de lo que sientes puede ser el primer paso para comprenderte mejor.
             Aquí puedes hacerlo con calma, respeto y acompañamiento profesional.
           </p>
         </div>
@@ -1383,10 +1761,10 @@
     <!-- SOBRE INTEGRA -->
     <section class="section section-white" id="sobre">
       <div class="container about-grid">
-        <div class="organic-card reveal" aria-label="Ilustración de bienestar emocional">
+        <div class="organic-card reveal" aria-label="Identidad visual de Integra Psicoterapia">
           <img
             src="img/logo-integra.png"
-            alt="Identidad visual de Integra Psicología"
+            alt="Identidad visual de Integra Psicoterapia"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
           >
           <i class="bi bi-person-heart" style="display:none;"></i>
@@ -1398,41 +1776,48 @@
             Sobre Integra
           </span>
 
-          <h2 class="section-title">Acompañamiento humano para cuidar tu salud emocional.</h2>
+          <h2 class="section-title">Acompañamiento psicoterapéutico con calidez profesional.</h2>
 
           <p class="section-text">
-            Integra nace como un espacio de acompañamiento psicológico donde cada persona
-            puede sentirse escuchada, respetada y acompañada. Pedir ayuda no es una señal
-            de debilidad, sino una forma valiente de cuidarse.
+            Integra Psicoterapia es un espacio de acompañamiento psicológico dirigido a personas
+            adolescentes y adultas. La atención está a cargo de la Lcda. María José Badilla Marín,
+            psicóloga por la Universidad de Costa Rica.
           </p>
 
           <p class="section-text">
-            Nuestro enfoque se basa en la empatía, la ética profesional y la confidencialidad,
-            ofreciendo herramientas prácticas para fortalecer el bienestar emocional.
+            El proceso se desarrolla desde la empatía, la confidencialidad y el respeto,
+            brindando un espacio seguro para hablar, comprender lo que estás viviendo y
+            fortalecer herramientas para tu bienestar emocional.
           </p>
+
+          <div class="professional-card">
+            <h3>Lcda. María José Badilla Marín</h3>
+            <p>Psicóloga por la Universidad de Costa Rica</p>
+            <span>Código profesional 13102</span>
+          </div>
 
           <div class="feature-list">
             <div class="feature-item">
               <i class="bi bi-heart"></i>
               <div>
                 <strong>Empatía</strong>
-                <p>Escuchamos tu historia con respeto, sin juicios y con sensibilidad humana.</p>
+                <p>Escucha profesional con respeto, sensibilidad humana y sin juicios.</p>
               </div>
             </div>
 
             <div class="feature-item">
               <i class="bi bi-shield-lock"></i>
               <div>
-                <strong>Ética profesional</strong>
-                <p>Cuidamos cada proceso con responsabilidad, claridad y compromiso.</p>
+                <strong>Confidencialidad</strong>
+                <p>Tu información y tu proceso se manejan con privacidad y cuidado profesional.</p>
               </div>
             </div>
 
             <div class="feature-item">
-              <i class="bi bi-lock"></i>
+              <i class="bi bi-check-circle"></i>
               <div>
-                <strong>Confidencialidad</strong>
-                <p>Tu información y tu proceso se manejan con privacidad y respeto.</p>
+                <strong>Profesionalismo</strong>
+                <p>Acompañamiento ético, responsable y orientado a tu bienestar emocional.</p>
               </div>
             </div>
           </div>
@@ -1465,12 +1850,13 @@
           </div>
           <h3>Psicoterapia individual</h3>
           <p>
-            Un espacio de acompañamiento para trabajar ansiedad, estrés, autoestima,
-            duelo, relaciones interpersonales u otros procesos personales.
+            Acompañamiento psicoterapéutico para personas adolescentes y adultas,
+            orientado a brindar apoyo emocional, escucha profesional y herramientas
+            para afrontar distintos procesos personales.
           </p>
           <ul>
-            <li><i class="bi bi-check-circle"></i> Duración: 50 minutos</li>
-            <li><i class="bi bi-check-circle"></i> Modalidad: presencial o virtual</li>
+            <li><i class="bi bi-check-circle"></i> Dirigido a adolescentes y personas adultas</li>
+            <li><i class="bi bi-check-circle"></i> Modalidad presencial o virtual</li>
             <li><i class="bi bi-check-circle"></i> Precio: consultar</li>
           </ul>
           <a href="#agendar" class="btn btn-dark">Agendar cita</a>
@@ -1482,7 +1868,7 @@
           </div>
           <h3>Talleres psicoeducativos</h3>
           <p>
-            Espacios grupales de aprendizaje y reflexión sobre salud mental, autocuidado,
+            Espacios de aprendizaje y reflexión sobre salud mental, autocuidado,
             manejo emocional, comunicación, estrés y bienestar integral.
           </p>
           <ul>
@@ -1495,16 +1881,16 @@
 
         <article class="service-card reveal">
           <div class="service-icon">
-            <i class="bi bi-chat-heart"></i>
+            <i class="bi bi-camera-video"></i>
           </div>
-          <h3>Primera consulta</h3>
+          <h3>Modalidad virtual</h3>
           <p>
-            Una primera conversación para conocer tu situación general, aclarar dudas
-            y definir juntos cómo iniciar tu proceso.
+            Atención psicológica en línea para facilitar el acceso al acompañamiento
+            profesional desde un espacio privado y seguro.
           </p>
           <ul>
-            <li><i class="bi bi-check-circle"></i> Orientación inicial</li>
-            <li><i class="bi bi-check-circle"></i> Modalidad: presencial, virtual o teléfono</li>
+            <li><i class="bi bi-check-circle"></i> Sesiones virtuales disponibles</li>
+            <li><i class="bi bi-check-circle"></i> Coordinación previa de horario</li>
             <li><i class="bi bi-check-circle"></i> Precio: consultar</li>
           </ul>
           <a href="#agendar" class="btn btn-dark">Da el primer paso</a>
@@ -1534,8 +1920,7 @@
           <div class="process-title">Sin pago en línea</div>
           <p>
             Esta solicitud no representa una cita confirmada automáticamente.
-            El equipo de Integra revisará la disponibilidad y te contactará para
-            confirmar el horario.
+            Integra revisará la disponibilidad y te contactará para confirmar el horario.
           </p>
         </div>
 
@@ -1566,7 +1951,7 @@
                 <option value="">Seleccione una opción</option>
                 <option value="Psicoterapia individual">Psicoterapia individual</option>
                 <option value="Taller psicoeducativo">Taller psicoeducativo</option>
-                <option value="Primera consulta">Primera consulta</option>
+                <option value="Modalidad virtual">Modalidad virtual</option>
               </select>
             </div>
 
@@ -1576,7 +1961,6 @@
                 <option value="">Seleccione una opción</option>
                 <option value="Presencial">Presencial</option>
                 <option value="Virtual">Virtual</option>
-                <option value="Teléfono">Teléfono</option>
               </select>
             </div>
 
@@ -1592,7 +1976,7 @@
 
             <div class="form-group">
               <label for="phone">Teléfono</label>
-              <input type="tel" id="phone" name="phone" placeholder="+506 8888-8888" required>
+              <input type="tel" id="phone" name="phone" placeholder="+506 6137-4065" required>
             </div>
 
             <div class="form-group">
@@ -1668,11 +2052,11 @@
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-question" type="button">
-            ¿Cuánto dura una sesión?
+            ¿A quién está dirigido el acompañamiento?
             <i class="bi bi-chevron-down"></i>
           </button>
           <div class="faq-answer">
-            <p>Generalmente una sesión tiene una duración aproximada de 50 minutos.</p>
+            <p>El acompañamiento psicoterapéutico está dirigido a personas adolescentes y adultas.</p>
           </div>
         </div>
 
@@ -1688,11 +2072,11 @@
 
         <div class="faq-item">
           <button class="faq-question" type="button">
-            ¿Qué pasa en la primera consulta?
+            ¿Dónde se ofrece atención presencial?
             <i class="bi bi-chevron-down"></i>
           </button>
           <div class="faq-answer">
-            <p>La primera consulta permite conocer tu situación general, aclarar dudas y definir juntos cómo iniciar el proceso.</p>
+            <p>La atención presencial está disponible en San Ramón de Alajuela y San Pedro de Montes de Oca.</p>
           </div>
         </div>
 
@@ -1702,7 +2086,7 @@
             <i class="bi bi-chevron-down"></i>
           </button>
           <div class="faq-answer">
-            <p>Sí. Puedes solicitar atención virtual, presencial o por teléfono, según disponibilidad.</p>
+            <p>Sí. Integra también ofrece modalidad virtual, según disponibilidad y coordinación previa.</p>
           </div>
         </div>
       </div>
@@ -1780,23 +2164,23 @@
           <i class="bi bi-whatsapp"></i>
           <div>
             <strong>WhatsApp</strong>
-            <p>+506 8888-8888</p>
+            <p>+506 6137-4065</p>
           </div>
         </div>
 
         <div class="contact-item">
-          <i class="bi bi-envelope"></i>
+          <i class="bi bi-pin-map"></i>
           <div>
-            <strong>Correo electrónico</strong>
-            <p>contacto@integra.com</p>
+            <strong>Atención presencial</strong>
+            <p>San Ramón de Alajuela<br>San Pedro de Montes de Oca</p>
           </div>
         </div>
 
         <div class="contact-item">
-          <i class="bi bi-geo-alt"></i>
+          <i class="bi bi-camera-video"></i>
           <div>
-            <strong>Ubicación general</strong>
-            <p>Costa Rica</p>
+            <strong>Modalidad virtual</strong>
+            <p>Disponible para sesiones en línea.</p>
           </div>
         </div>
 
@@ -1804,17 +2188,27 @@
           <i class="bi bi-clock"></i>
           <div>
             <strong>Horario de atención</strong>
-            <p>Lunes a viernes, 8:00 a.m. - 5:00 p.m.</p>
+            <p>Según disponibilidad y coordinación previa.</p>
           </div>
         </div>
 
         <div class="social-links">
-          <a href="#" aria-label="Instagram de Integra"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="Facebook de Integra"><i class="bi bi-facebook"></i></a>
-          <a href="https://wa.me/50688888888" target="_blank" aria-label="WhatsApp de Integra"><i class="bi bi-whatsapp"></i></a>
-        </div>
-      </div>
-    </div>
+  <a 
+    href="https://www.instagram.com/psic.mariajose_badillamarin/" 
+    target="_blank" 
+    aria-label="Instagram de Lcda. María José Badilla Marín"
+  >
+    <i class="bi bi-instagram"></i>
+  </a>
+
+  <a 
+    href="https://wa.me/50661374065" 
+    target="_blank" 
+    aria-label="WhatsApp de Integra Psicoterapia"
+  >
+    <i class="bi bi-whatsapp"></i>
+  </a>
+</div>
   </section>
 
   <!-- FOOTER -->
@@ -1825,7 +2219,7 @@
           <div class="brand" style="margin-bottom: 18px;">
             <img
               src="img/logo-integra.png"
-              alt="Logo de Integra Psicología"
+              alt="Logo de Integra Psicoterapia"
               class="brand-logo"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
             >
@@ -1854,20 +2248,20 @@
           <ul>
             <li><a href="#servicios">Psicoterapia individual</a></li>
             <li><a href="#servicios">Talleres psicoeducativos</a></li>
-            <li><a href="#servicios">Primera consulta</a></li>
+            <li><a href="#servicios">Modalidad virtual</a></li>
           </ul>
         </div>
 
         <div>
           <h4>Contacto</h4>
-          <p>WhatsApp: +506 8888-8888</p>
-          <p>Correo: contacto@integra.com</p>
-          <p>Costa Rica</p>
+          <p>WhatsApp: +506 6137-4065</p>
+          <p>Atención presencial: San Ramón de Alajuela y San Pedro de Montes de Oca</p>
+          <p>Modalidad virtual disponible</p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Integra Psicología. Todos los derechos reservados.</span>
+        <span>© 2026 Integra Psicoterapia. Todos los derechos reservados.</span>
         <span>La información del sitio no sustituye una valoración psicológica profesional.</span>
       </div>
     </div>
@@ -1898,7 +2292,7 @@
 
   <!-- WHATSAPP FLOAT -->
   <a
-    href="https://wa.me/50688888888?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Integra"
+    href="https://wa.me/50661374065?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Integra"
     class="whatsapp-float"
     target="_blank"
     aria-label="Agendar cita por WhatsApp"
