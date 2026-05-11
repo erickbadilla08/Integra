@@ -1,267 +1,1478 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Integra | Bienestar emocional</title>
 
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #073A4B;
+            --color-primary-soft: #0F5C68;
+            --color-sage: #A8C3B5;
+            --color-sage-light: #D8E5DD;
+            --color-cream: #F7F4EF;
+            --color-white: #FFFFFF;
+            --color-dark: #24343A;
+            --color-muted: #6B7C80;
+            --color-border: rgba(7, 58, 75, 0.12);
+            --shadow-soft: 0 18px 45px rgba(7, 58, 75, 0.10);
+            --shadow-hover: 0 28px 70px rgba(7, 58, 75, 0.16);
+            --radius-sm: 14px;
+            --radius-md: 22px;
+            --radius-lg: 34px;
+            --transition: all 0.35s ease;
+        }
 
-    <!-- CSS propio -->
-    <link rel="stylesheet" href="css/style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--color-cream);
+            color: var(--color-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: "DM Serif Display", serif;
+            font-weight: 400;
+            color: var(--color-primary);
+            line-height: 1.08;
+        }
+
+        p {
+            color: var(--color-muted);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 36px));
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 110px 0;
+        }
+
+        .section-white {
+            background: var(--color-white);
+        }
+
+        .section-cream {
+            background: var(--color-cream);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(168, 195, 181, 0.28);
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            max-width: 760px;
+            margin-bottom: 18px;
+        }
+
+        .section-text {
+            max-width: 720px;
+            font-size: 1.07rem;
+            color: var(--color-muted);
+        }
+
+        /* NAVBAR */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 58, 75, 0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .nav-inner {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--color-white);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            font-size: 1.18rem;
+        }
+
+        .brand-mark {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.42);
+            background: rgba(255, 255, 255, 0.08);
+            display: grid;
+            place-items: center;
+            color: var(--color-white);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.82);
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--color-white);
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            background: transparent;
+            color: var(--color-white);
+            border-radius: 14px;
+            font-size: 1.35rem;
+            cursor: pointer;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 999px;
+            padding: 13px 24px;
+            font-family: "DM Sans", sans-serif;
+            font-weight: 700;
+            font-size: 0.96rem;
+            transition: var(--transition);
+            box-shadow: 0 12px 28px rgba(7, 58, 75, 0.13);
+        }
+
+        .btn-primary {
+            background: var(--color-sage);
+            color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #b8d1c5;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-dark {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-dark:hover {
+            transform: translateY(-3px);
+            background: var(--color-primary-soft);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-primary);
+            border: 1.5px solid var(--color-primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+
+        .btn-white {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            background: var(--color-cream);
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(135deg, rgba(7, 58, 75, 0.96), rgba(15, 92, 104, 0.92)),
+                radial-gradient(circle at 20% 10%, rgba(168, 195, 181, 0.55), transparent 32%),
+                radial-gradient(circle at 90% 75%, rgba(247, 244, 239, 0.22), transparent 30%);
+            color: var(--color-white);
+            padding: 128px 0 110px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.13;
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='900' height='700' viewBox='0 0 900 700' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M142 339C96 251 111 137 205 84c90-51 201 3 275 61 70 55 134 92 230 92 78 0 142 65 136 143-6 79-83 131-157 153-109 32-222-14-319 35-89 45-185 88-265 27-76-58-31-161 37-256Z' fill='none' stroke='%23FFFFFF' stroke-width='2'/%3E%3Cpath d='M268 242c72-98 215-118 302-47 88 72 94 215 13 307-80 91-217 111-306 41-90-71-81-204-9-301Z' fill='none' stroke='%23A8C3B5' stroke-width='2'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right -120px center;
+            background-size: 820px;
+        }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 58px;
+        }
+
+        .hero h1 {
+            color: var(--color-white);
+            font-size: clamp(3.4rem, 8vw, 6.8rem);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--color-sage);
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 1.16rem;
+            max-width: 660px;
+            margin-bottom: 32px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .hero-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: var(--radius-lg);
+            padding: 34px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+            backdrop-filter: blur(18px);
+        }
+
+        .hero-card-icon {
+            width: 68px;
+            height: 68px;
+            border-radius: 24px;
+            background: var(--color-sage);
+            color: var(--color-primary);
+            display: grid;
+            place-items: center;
+            font-size: 1.7rem;
+            margin-bottom: 22px;
+        }
+
+        .hero-card h3 {
+            color: var(--color-white);
+            font-size: 2rem;
+            margin-bottom: 14px;
+        }
+
+        .hero-card p {
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .trust-row {
+            margin-top: 38px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .trust-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.10);
+            color: rgba(255, 255, 255, 0.82);
+            font-size: 0.92rem;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .organic-card {
+            background:
+                radial-gradient(circle at 20% 20%, rgba(168, 195, 181, 0.70), transparent 34%),
+                linear-gradient(135deg, #F7F4EF, #FFFFFF);
+            min-height: 480px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+        }
+
+        .organic-card::before {
+            content: "";
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            border: 1px solid rgba(7, 58, 75, 0.14);
+            left: -80px;
+            bottom: -80px;
+        }
+
+        .organic-card::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 1px solid rgba(15, 92, 104, 0.18);
+            top: 70px;
+            right: -40px;
+        }
+
+        .organic-card i {
+            font-size: 6rem;
+            color: var(--color-primary);
+            opacity: 0.86;
+            z-index: 1;
+        }
+
+        .feature-list {
+            display: grid;
+            gap: 14px;
+            margin-top: 26px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 16px;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 30px rgba(7, 58, 75, 0.06);
+        }
+
+        .feature-item i {
+            color: var(--color-primary);
+            background: rgba(168, 195, 181, 0.40);
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        .feature-item strong {
+            display: block;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+
+        /* SERVICES */
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 42px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            position: relative;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 7px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--color-sage), var(--color-primary-soft));
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(7, 58, 75, 0.20);
+        }
+
+        .service-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 24px;
+            background: rgba(168, 195, 181, 0.35);
+            color: var(--color-primary);
+            display: grid;
+            place-items: center;
+            font-size: 1.8rem;
+            margin-bottom: 22px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(-3deg) scale(1.04);
+            background: var(--color-sage);
+        }
+
+        .service-card h3 {
+            font-size: 2.1rem;
+            margin-bottom: 14px;
+        }
+
+        .service-card ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+            margin: 22px 0 28px;
+        }
+
+        .service-card li {
+            color: var(--color-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-card li i {
+            color: var(--color-primary-soft);
+        }
+
+        /* RESERVATION */
+        .reservation {
+            background:
+                linear-gradient(135deg, rgba(7, 58, 75, 0.96), rgba(15, 92, 104, 0.92)),
+                radial-gradient(circle at top left, rgba(168, 195, 181, 0.38), transparent 28%);
+            color: var(--color-white);
+            border-radius: 0;
+        }
+
+        .reservation h2,
+        .reservation h3 {
+            color: var(--color-white);
+        }
+
+        .reservation p {
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .reservation-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 34px;
+            align-items: start;
+        }
+
+        .payment-card,
+        .form-card {
+            background: rgba(255, 255, 255, 0.11);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
+        }
+
+        .price-box {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border-radius: var(--radius-lg);
+            padding: 26px;
+            margin: 24px 0;
+        }
+
+        .price-label {
+            color: var(--color-muted);
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .price {
+            font-family: "DM Serif Display", serif;
+            font-size: 3.6rem;
+            line-height: 1;
+            margin-top: 8px;
+            color: var(--color-primary);
+        }
+
+        .legal-note {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.70);
+            margin-top: 18px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .form-group {
+            display: grid;
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.88);
+            font-size: 0.93rem;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            border-radius: 18px;
+            padding: 14px 16px;
+            font-family: "DM Sans", sans-serif;
+            font-size: 1rem;
+            outline: none;
+            color: var(--color-dark);
+            background: rgba(255, 255, 255, 0.94);
+            transition: var(--transition);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--color-sage);
+            box-shadow: 0 0 0 4px rgba(168, 195, 181, 0.22);
+        }
+
+        .form-help {
+            font-size: 0.84rem;
+            color: rgba(255, 255, 255, 0.68);
+            margin-top: 6px;
+        }
+
+        .alert {
+            display: none;
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-radius: 18px;
+            font-weight: 700;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-success {
+            background: rgba(168, 195, 181, 0.22);
+            color: var(--color-white);
+            border: 1px solid rgba(168, 195, 181, 0.52);
+        }
+
+        .alert-error {
+            background: rgba(255, 255, 255, 0.13);
+            color: #ffe5df;
+            border: 1px solid rgba(255, 210, 200, 0.35);
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 34px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 14px;
+            margin-top: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-item i {
+            width: 44px;
+            height: 44px;
+            border-radius: 16px;
+            background: rgba(168, 195, 181, 0.34);
+            color: var(--color-primary);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item strong {
+            color: var(--color-primary);
+            display: block;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #052E3C;
+            color: var(--color-white);
+            padding: 72px 0 28px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr 0.8fr 0.9fr;
+            gap: 34px;
+            margin-bottom: 42px;
+        }
+
+        .footer h4 {
+            color: var(--color-white);
+            font-size: 1.5rem;
+            margin-bottom: 18px;
+        }
+
+        .footer p,
+        .footer a {
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 0.96rem;
+        }
+
+        .footer ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .footer a:hover {
+            color: var(--color-sage);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 0.9rem;
+        }
+
+        /* MODAL */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(5, 46, 60, 0.72);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+
+        .modal-backdrop.show {
+            display: flex;
+        }
+
+        .modal {
+            width: min(560px, 100%);
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: 34px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.25);
+            position: relative;
+            animation: modalIn 0.35s ease both;
+        }
+
+        .modal h3 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            margin-bottom: 22px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: var(--color-cream);
+            color: var(--color-primary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .modal-success-icon {
+            width: 70px;
+            height: 70px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: rgba(168, 195, 181, 0.35);
+            color: var(--color-primary);
+            font-size: 2rem;
+            margin-bottom: 18px;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(24px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* SCROLL ANIMATION */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 920px) {
+            .menu-toggle {
+                display: grid;
+                place-items: center;
+            }
+
+            .nav-links {
+                position: absolute;
+                left: 18px;
+                right: 18px;
+                top: 88px;
+                background: rgba(7, 58, 75, 0.96);
+                backdrop-filter: blur(18px);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 24px;
+                padding: 18px;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                text-align: center;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .reservation-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 92px 0 82px;
+            }
+
+            .services-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .section {
+                padding: 78px 0;
+            }
+
+            .hero h1 {
+                font-size: 3.4rem;
+            }
+
+            .hero-actions,
+            .trust-row {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-card,
+            .form-card,
+            .service-card,
+            .contact-card {
+                padding: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <span class="logo-integra">
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="#inicio" class="brand">
+                <span class="brand-mark">
                     <i class="bi bi-heart-pulse"></i>
                 </span>
                 Integra
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
-                <span class="navbar-toggler-icon"></span>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <i class="bi bi-list"></i>
             </button>
 
-            <div class="collapse navbar-collapse" id="menuPrincipal">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link active">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="sobre-integra.html" class="nav-link">Sobre Integra</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="servicios.html" class="nav-link">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="agenda.html" class="nav-link">Agenda tu cita</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contacto.html" class="nav-link">Contacto</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="agenda.html" class="btn-navbar">Agenda tu cita</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre">Sobre Integra</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#reservar">Reservar cita</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#reservar" class="btn btn-primary">Agenda tu cita</a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- HERO -->
-    <header class="hero">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-7 hero-content">
-                    <div class="hero-badge">
-                        <i class="bi bi-shield-check"></i>
-                        Espacio seguro, profesional y confidencial
-                    </div>
+    <header class="hero" id="inicio">
+        <div class="container hero-grid">
+            <div class="reveal">
+                <span class="eyebrow">
+                    <i class="bi bi-shield-check"></i>
+                    Atención psicológica profesional
+                </span>
 
-                    <h1>Integra</h1>
+                <h1>Integra <span>|</span> Bienestar emocional</h1>
 
-                    <p>
-                        Acompañamiento psicológico para tu bienestar emocional.
-                        En Integra ofrecemos un espacio humano, seguro y profesional
-                        para procesos terapéuticos individuales y talleres psicoeducativos.
-                    </p>
+                <p>
+                    Un espacio sereno, confidencial y profesional para acompañar tus procesos emocionales,
+                    fortalecer recursos personales y promover una vida con mayor equilibrio.
+                </p>
 
-                    <div class="hero-actions">
-                        <a href="agenda.html" class="btn btn-sage">
-                            Agenda tu cita
-                        </a>
-                        <a href="servicios.html" class="btn btn-white">
-                            Conoce los servicios
-                        </a>
-                    </div>
+                <div class="hero-actions">
+                    <a href="#reservar" class="btn btn-primary">
+                        <i class="bi bi-calendar-check"></i>
+                        Reservar cita
+                    </a>
+                    <a href="#servicios" class="btn btn-white">
+                        Conocer servicios
+                    </a>
                 </div>
 
-                <div class="col-lg-5">
-                    <div class="hero-card">
-                        <div class="hero-icon">
-                            <i class="bi bi-flower1"></i>
-                        </div>
-                        <h3>Bienestar emocional con acompañamiento cercano</h3>
-                        <p>
-                            Trabajamos desde la empatía, el respeto y la confidencialidad
-                            para acompañar tus procesos personales de forma responsable.
-                        </p>
-                    </div>
+                <div class="trust-row">
+                    <span class="trust-pill"><i class="bi bi-lock"></i> Confidencialidad</span>
+                    <span class="trust-pill"><i class="bi bi-person-heart"></i> Trato humano</span>
+                    <span class="trust-pill"><i class="bi bi-flower1"></i> Bienestar integral</span>
                 </div>
+            </div>
+
+            <div class="hero-card reveal">
+                <div class="hero-card-icon">
+                    <i class="bi bi-brightness-alt-high"></i>
+                </div>
+                <h3>Acompañamiento con calma, respeto y confianza</h3>
+                <p>
+                    En Integra cada proceso es abordado desde la escucha, la empatía y el cuidado ético,
+                    evitando juicios y priorizando el bienestar emocional de cada persona.
+                </p>
             </div>
         </div>
     </header>
 
-    <!-- VALORES PRINCIPALES -->
-    <section class="section-white">
+    <!-- ABOUT -->
+    <section class="section section-white" id="sobre">
+        <div class="container about-grid">
+            <div class="organic-card reveal">
+                <i class="bi bi-person-heart"></i>
+            </div>
+
+            <div class="reveal">
+                <span class="eyebrow">
+                    <i class="bi bi-leaf"></i>
+                    Sobre Integra
+                </span>
+
+                <h2 class="section-title">Un espacio clínico cercano para cuidar tu salud emocional</h2>
+
+                <p class="section-text">
+                    Integra nace con el propósito de acompañar procesos psicológicos desde una mirada
+                    profesional, ética y humana. Nuestro enfoque busca promover herramientas de autocuidado,
+                    regulación emocional y fortalecimiento personal.
+                </p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="bi bi-check2-circle"></i>
+                        <div>
+                            <strong>Atención confidencial</strong>
+                            <p>Un espacio seguro para expresar lo que estás viviendo con respeto y privacidad.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="bi bi-check2-circle"></i>
+                        <div>
+                            <strong>Acompañamiento personalizado</strong>
+                            <p>Cada proceso se adapta a tus necesidades, contexto y ritmo personal.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <i class="bi bi-check2-circle"></i>
+                        <div>
+                            <strong>Bienestar integral</strong>
+                            <p>Promovemos herramientas prácticas para fortalecer tu equilibrio emocional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section-cream" id="servicios">
         <div class="container">
-            <div class="text-center">
-                <p class="section-subtitle">Nuestro enfoque</p>
-                <h2 class="section-title">Acompañamiento psicológico integral</h2>
-                <p class="section-description">
-                    Integra nace como una propuesta profesional para brindar apoyo emocional,
-                    fortalecer recursos personales y promover herramientas de autocuidado.
+            <div class="services-header reveal">
+                <div>
+                    <span class="eyebrow">
+                        <i class="bi bi-stars"></i>
+                        Servicios
+                    </span>
+                    <h2 class="section-title">Acompañamiento psicológico para distintas necesidades</h2>
+                </div>
+                <p class="section-text">
+                    Servicios diseñados para promover el bienestar emocional, el autocuidado y el crecimiento personal.
                 </p>
             </div>
 
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card-integra">
-                        <div class="card-icon">
-                            <i class="bi bi-person-check"></i>
-                        </div>
-                        <h3>Atención profesional</h3>
-                        <p>
-                            Acompañamiento psicológico desde una mirada ética, responsable
-                            y enfocada en el bienestar de cada persona.
-                        </p>
+            <div class="services-grid">
+                <article class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="bi bi-person-heart"></i>
                     </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-integra">
-                        <div class="card-icon">
-                            <i class="bi bi-lock"></i>
-                        </div>
-                        <h3>Espacio seguro</h3>
-                        <p>
-                            Un entorno confidencial y respetuoso donde cada proceso puede
-                            abordarse con calma y confianza.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-integra">
-                        <div class="card-icon">
-                            <i class="bi bi-heart"></i>
-                        </div>
-                        <h3>Acompañamiento personalizado</h3>
-                        <p>
-                            Cada persona tiene una historia distinta, por eso el proceso
-                            se adapta a sus necesidades y ritmo.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOBRE INTEGRA RESUMIDO -->
-    <section class="section-light">
-        <div class="container">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6">
-                    <p class="section-subtitle">Sobre Integra</p>
-                    <h2 class="section-title">Un espacio para cuidar tu salud emocional</h2>
+                    <h3>Psicoterapia</h3>
                     <p>
-                        Integra busca acompañar procesos emocionales desde una atención
-                        humana, profesional y cercana. Nuestro propósito es brindar
-                        herramientas que ayuden a fortalecer el bienestar psicológico.
+                        Acompañamiento psicológico individual orientado a brindar apoyo emocional,
+                        fortalecer recursos personales y trabajar dificultades relacionadas con ansiedad,
+                        estrés, autoestima, duelo o relaciones interpersonales.
                     </p>
-
-                    <ul class="about-list">
-                        <li>
-                            <i class="bi bi-check-circle"></i>
-                            Atención basada en respeto y confidencialidad.
-                        </li>
-                        <li>
-                            <i class="bi bi-check-circle"></i>
-                            Procesos orientados al autocuidado y bienestar integral.
-                        </li>
-                        <li>
-                            <i class="bi bi-check-circle"></i>
-                            Psicoterapia individual y talleres psicoeducativos.
-                        </li>
+                    <ul>
+                        <li><i class="bi bi-check-circle"></i> Atención individual</li>
+                        <li><i class="bi bi-check-circle"></i> Modalidad presencial o virtual</li>
+                        <li><i class="bi bi-check-circle"></i> Espacio seguro y confidencial</li>
                     </ul>
+                    <a href="#reservar" class="btn btn-dark">Reservar cita</a>
+                </article>
 
-                    <a href="sobre-integra.html" class="btn btn-primary-integra mt-3">
-                        Conocer más
-                    </a>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="about-image-box">
-                        <div class="about-image-placeholder">
-                            <i class="bi bi-brightness-alt-high"></i>
-                        </div>
-                        <div class="about-floating-card">
-                            <h5>Calma y confianza</h5>
-                            <p>Un espacio diseñado para acompañarte con respeto.</p>
-                        </div>
+                <article class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="bi bi-people"></i>
                     </div>
-                </div>
+                    <h3>Talleres psicoeducativos</h3>
+                    <p>
+                        Espacios grupales de aprendizaje y reflexión sobre salud mental, autocuidado,
+                        manejo emocional, comunicación, estrés, autoestima y bienestar integral.
+                    </p>
+                    <ul>
+                        <li><i class="bi bi-check-circle"></i> Aprendizaje práctico</li>
+                        <li><i class="bi bi-check-circle"></i> Espacios grupales</li>
+                        <li><i class="bi bi-check-circle"></i> Temas de bienestar emocional</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-outline">Solicitar información</a>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="section-dark">
-        <div class="container text-center">
-            <h2>Da el primer paso hacia tu bienestar emocional</h2>
-            <p class="mt-3">
-                Puedes solicitar información o agendar una cita de manera sencilla.
-            </p>
-            <a href="agenda.html" class="btn btn-sage mt-3">
-                Agenda tu cita
-            </a>
+    <!-- RESERVATION -->
+    <section class="section reservation" id="reservar">
+        <div class="container reservation-grid">
+            <div class="payment-card reveal">
+                <span class="eyebrow">
+                    <i class="bi bi-credit-card"></i>
+                    Reserva de cita
+                </span>
+
+                <h2 class="section-title">Reserva tu espacio de atención</h2>
+
+                <p>
+                    Completa el formulario y realiza el pago de reserva para iniciar el proceso.
+                    Posteriormente, te contactaremos para confirmar disponibilidad y horario.
+                </p>
+
+                <div class="price-box">
+                    <div class="price-label">Monto fijo de reserva</div>
+                    <div class="price">₡10,000</div>
+                    <p>
+                        El monto no es editable por el usuario y corresponde únicamente a la reserva del espacio.
+                    </p>
+                </div>
+
+                <p class="legal-note">
+                    Nota legal: este pago corresponde a una reserva de cita y no representa el pago total
+                    de una consulta psicológica completa. No incluya información clínica sensible en este formulario.
+                </p>
+            </div>
+
+            <div class="form-card reveal">
+                <h3>Formulario de reserva</h3>
+                <p>
+                    Ingresa tus datos básicos. Te contactaremos para confirmar el horario disponible.
+                </p>
+
+                <form id="reservationForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+506 8888-8888" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="datetime">Fecha y hora deseada</label>
+                            <input type="datetime-local" id="datetime" name="datetime" required>
+                        </div>
+
+                        <div class="form-group full">
+                            <label for="reason">Motivo general de consulta</label>
+                            <textarea id="reason" name="reason"
+                                placeholder="Escribe un motivo general. Evita incluir diagnósticos, medicamentos o información clínica sensible."
+                                required></textarea>
+                            <span class="form-help">
+                                Este campo es solo para orientación inicial. No incluya información clínica sensible.
+                            </span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="margin-top: 22px;">
+                        <i class="bi bi-lock"></i>
+                        Continuar al pago de ₡10,000
+                    </button>
+
+                    <div class="alert alert-error" id="errorAlert">
+                        Por favor completa todos los campos antes de continuar al pago.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-white" id="contacto">
+        <div class="container contact-grid">
+            <div class="contact-card reveal">
+                <span class="eyebrow">
+                    <i class="bi bi-chat-dots"></i>
+                    Contacto
+                </span>
+
+                <h2 class="section-title">Estamos para orientarte</h2>
+
+                <p>
+                    Puedes escribir para recibir más información sobre servicios, disponibilidad
+                    o modalidad de atención.
+                </p>
+            </div>
+
+            <div class="contact-card reveal">
+                <div class="contact-item">
+                    <i class="bi bi-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        <p>+506 8888-8888</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="bi bi-envelope"></i>
+                    <div>
+                        <strong>Correo electrónico</strong>
+                        <p>contacto@integra.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="bi bi-geo-alt"></i>
+                    <div>
+                        <strong>Ubicación general</strong>
+                        <p>Costa Rica</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <i class="bi bi-clock"></i>
+                    <div>
+                        <strong>Horario de atención</strong>
+                        <p>Lunes a viernes, 8:00 a.m. - 5:00 p.m.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <div class="row g-4">
-                <div class="col-md-5">
-                    <div class="footer-logo">
-                        <span class="logo-integra">
+            <div class="footer-grid">
+                <div>
+                    <div class="brand" style="margin-bottom: 18px;">
+                        <span class="brand-mark">
                             <i class="bi bi-heart-pulse"></i>
                         </span>
                         Integra
                     </div>
                     <p>
-                        Acompañamiento psicológico para promover el bienestar emocional,
-                        el autocuidado y la salud mental.
+                        Acompañamiento psicológico profesional para promover bienestar emocional,
+                        autocuidado y equilibrio personal.
                     </p>
                 </div>
 
-                <div class="col-md-3">
-                    <h5>Enlaces</h5>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="sobre-integra.html">Sobre Integra</a></li>
-                        <li><a href="servicios.html">Servicios</a></li>
-                        <li><a href="agenda.html">Agenda tu cita</a></li>
-                        <li><a href="contacto.html">Contacto</a></li>
+                <div>
+                    <h4>Secciones</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#sobre">Sobre Integra</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#reservar">Reservar cita</a></li>
                     </ul>
                 </div>
 
-                <div class="col-md-4">
-                    <h5>Contacto</h5>
-                    <p>Correo: contacto@integra.com</p>
+                <div>
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Psicoterapia</a></li>
+                        <li><a href="#servicios">Talleres psicoeducativos</a></li>
+                        <li><a href="#reservar">Reserva de cita</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Contacto</h4>
                     <p>WhatsApp: +506 8888-8888</p>
-                    <p>Ubicación: Costa Rica</p>
+                    <p>Correo: contacto@integra.com</p>
+                    <p>Costa Rica</p>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>© 2026 Integra. Todos los derechos reservados.</p>
+                <span>© 2026 Integra. Todos los derechos reservados.</span>
+                <span>La información del sitio no sustituye una valoración psicológica profesional.</span>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS y JS propio -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/publico.js"></script>
+    <!-- SUCCESS MODAL -->
+    <div class="modal-backdrop" id="successModal">
+        <div class="modal">
+            <button class="modal-close" id="closeModal" aria-label="Cerrar modal">
+                <i class="bi bi-x-lg"></i>
+            </button>
+
+            <div class="modal-success-icon">
+                <i class="bi bi-check2"></i>
+            </div>
+
+            <h3>¡Tu cita ha sido reservada!</h3>
+            <p>
+                Te contactaremos para confirmar el horario. Gracias por confiar en Integra.
+            </p>
+
+            <button class="btn btn-dark" id="modalOk">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <!-- Stripe.js opcional -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <script>
+        /*
+          ======================================================
+          CONFIGURACIÓN DE PAGO
+          ======================================================
+    
+          Para pagos reales en Netlify usando un solo HTML, lo más seguro es usar
+          un Stripe Payment Link o PayPal Checkout Link ya configurado con monto fijo.
+    
+          1. En Stripe crea un Payment Link de ₡10,000.
+          2. Copia el enlace.
+          3. Pégalo en STRIPE_PAYMENT_LINK.
+    
+          Ejemplo:
+          const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/tu_link_real";
+    
+          Si no tienes Stripe, puedes poner un link de PayPal.
+        */
+
+        const STRIPE_PAYMENT_LINK = "https://buy.stripe.com/REEMPLAZA_ESTE_LINK";
+        const PAYMENT_AMOUNT = 10000;
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+        const reservationForm = document.getElementById("reservationForm");
+        const errorAlert = document.getElementById("errorAlert");
+        const successModal = document.getElementById("successModal");
+        const closeModal = document.getElementById("closeModal");
+        const modalOk = document.getElementById("modalOk");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("show");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("show");
+            });
+        });
+
+        /*
+          Animación al hacer scroll
+        */
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.16
+        });
+
+        revealElements.forEach(element => revealObserver.observe(element));
+
+        /*
+          Validación del formulario y redirección al pago
+        */
+        reservationForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const formData = {
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                phone: document.getElementById("phone").value.trim(),
+                datetime: document.getElementById("datetime").value.trim(),
+                reason: document.getElementById("reason").value.trim(),
+                amount: PAYMENT_AMOUNT
+            };
+
+            const isValid =
+                formData.name &&
+                formData.email &&
+                formData.phone &&
+                formData.datetime &&
+                formData.reason;
+
+            if (!isValid) {
+                errorAlert.classList.add("show");
+                return;
+            }
+
+            errorAlert.classList.remove("show");
+
+            /*
+              Guardamos temporalmente los datos en el navegador.
+              Esto NO reemplaza una base de datos real.
+              Para producción completa, el backend debe guardar estos datos
+              y luego crear la sesión de pago de Stripe.
+            */
+            localStorage.setItem("integra_reserva_pendiente", JSON.stringify(formData));
+
+            /*
+              Si todavía no pegaste el Payment Link real,
+              mostramos el modal para simular el flujo visual.
+            */
+            if (STRIPE_PAYMENT_LINK.includes("REEMPLAZA_ESTE_LINK")) {
+                showSuccessModal();
+                reservationForm.reset();
+                return;
+            }
+
+            /*
+              Redirección segura al Payment Link configurado en Stripe.
+              El monto debe estar configurado desde Stripe como ₡10,000.
+            */
+            window.location.href = STRIPE_PAYMENT_LINK;
+        });
+
+        function showSuccessModal() {
+            successModal.classList.add("show");
+        }
+
+        function closeSuccessModal() {
+            successModal.classList.remove("show");
+        }
+
+        closeModal.addEventListener("click", closeSuccessModal);
+        modalOk.addEventListener("click", closeSuccessModal);
+
+        successModal.addEventListener("click", function (event) {
+            if (event.target === successModal) {
+                closeSuccessModal();
+            }
+        });
+
+        /*
+          Confirmación visual si vuelven desde una página de pago.
+          Puedes configurar el success URL de Stripe así:
+          https://tu-sitio.netlify.app/?payment=success
+    
+          Si la URL trae payment=success, se muestra el mensaje final.
+        */
+        const params = new URLSearchParams(window.location.search);
+
+        if (params.get("payment") === "success") {
+            showSuccessModal();
+            localStorage.removeItem("integra_reserva_pendiente");
+        }
+    </script>
 </body>
+
 </html>
