@@ -2305,16 +2305,12 @@
     =====================================================
     URL DEL BACKEND EN RAILWAY
     =====================================================
-
-    Cambia esta URL por la que te dio Railway en:
-    Settings → Networking → Generate Domain
-
-    Ejemplo:
-    const API_URL = "https://integra-production.up.railway.app";
+    Esta debe ser la URL pública que te dio Railway.
+    No debe llevar slash al final.
   */
 
- const API_URL = "https://integra-production-75f9.up.railway.app";
-  
+  const API_URL = "https://integra-production-75f9.up.railway.app";
+
   const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
   const appointmentForm = document.getElementById("appointmentForm");
@@ -2330,15 +2326,17 @@
     =====================================================
   */
 
-  menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("show");
-  });
-
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("show");
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
     });
-  });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+      });
+    });
+  }
 
   /*
     =====================================================
@@ -2348,18 +2346,22 @@
 
   const revealElements = document.querySelectorAll(".reveal");
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        revealObserver.unobserve(entry.target);
-      }
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.16
     });
-  }, {
-    threshold: 0.16
-  });
 
-  revealElements.forEach(element => revealObserver.observe(element));
+    revealElements.forEach(element => revealObserver.observe(element));
+  } else {
+    revealElements.forEach(element => element.classList.add("visible"));
+  }
 
   /*
     =====================================================
@@ -2376,74 +2378,31 @@
 
   /*
     =====================================================
-    FORMULARIO DE AGENDA
-    Envía los datos desde Netlify hacia Railway
+    FUNCIONES DE MENSAJES
     =====================================================
   */
 
-  appointmentForm.addEventListener("submit", async function(event) {
-    event.preventDefault();
-
-    const formData = {
-      service: document.getElementById("service").value.trim(),
-      modality: document.getElementById("modality").value.trim(),
-      name: document.getElementById("name").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      phone: document.getElementById("phone").value.trim(),
-      datetime: document.getElementById("datetime").value.trim(),
-      reason: document.getElementById("reason").value.trim()
-    };
-
-    const isValid =
-      formData.service &&
-      formData.modality &&
-      formData.name &&
-      formData.email &&
-      formData.phone &&
-      formData.datetime;
-
-    if (!isValid) {
+  function mostrarError(mensaje) {
+    if (successAlert) {
       successAlert.classList.remove("show");
-      errorAlert.textContent = "Parece que falta algo aquí. Revisa los campos obligatorios.";
-      errorAlert.classList.add("show");
-      return;
     }
 
-    errorAlert.classList.remove("show");
-    successAlert.classList.remove("show");
+    if (errorAlert) {
+      errorAlert.textContent = mensaje;
+      errorAlert.classList.add("show");
+    }
+  }
 
-    try {
-      const respuesta = await fetch(`https://integra-production-75f9.up.railway.app/api/citas`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
+  function mostrarExito(mensaje) {
+    if (errorAlert) {
+      errorAlert.classList.remove("show");
+    }
 
-      const resultado = await respuesta.json();
-
-      if (!respuesta.ok) {
-        throw new Error(resultado.error || "No se pudo enviar la solicitud.");
-      }
-
-      console.log("Solicitud enviada:", resultado);
-
-      successAlert.textContent = "¡Listo! Te contactaremos pronto.";
+    if (successAlert) {
+      successAlert.textContent = mensaje;
       successAlert.classList.add("show");
-
-      appointmentForm.reset();
-
-      showSuccessModal();
-
-    } catch (error) {
-      console.error("Error al enviar la solicitud:", error);
-
-      successAlert.classList.remove("show");
-      errorAlert.textContent = "No se pudo enviar la solicitud. Intenta nuevamente o escribe por WhatsApp.";
-      errorAlert.classList.add("show");
     }
-  });
+  }
 
   /*
     =====================================================
@@ -2452,21 +2411,134 @@
   */
 
   function showSuccessModal() {
-    successModal.classList.add("show");
+    if (successModal) {
+      successModal.classList.add("show");
+    }
   }
 
   function closeSuccessModal() {
-    successModal.classList.remove("show");
+    if (successModal) {
+      successModal.classList.remove("show");
+    }
   }
 
-  closeModal.addEventListener("click", closeSuccessModal);
-  modalOk.addEventListener("click", closeSuccessModal);
+  if (closeModal) {
+    closeModal.addEventListener("click", closeSuccessModal);
+  }
 
-  successModal.addEventListener("click", function(event) {
-    if (event.target === successModal) {
-      closeSuccessModal();
+  if (modalOk) {
+    modalOk.addEventListener("click", closeSuccessModal);
+  }
+
+  if (successModal) {
+    successModal.addEventListener("click", function(event) {
+      if (event.target === successModal) {
+        closeSuccessModal();
+      }
+    });
+  }
+
+  /*
+    =====================================================
+    PRUEBA DE CONEXIÓN CON RAILWAY
+    =====================================================
+    Esto revisa si el backend responde.
+    Puedes ver el resultado en la consola del navegador.
+  */
+
+  async function probarBackend() {
+    try {
+      const respuesta = await fetch(`${API_URL}/api/health`, {
+        method: "GET"
+      });
+
+      if (!respuesta.ok) {
+        throw new Error(`Backend respondió con estado ${respuesta.status}`);
+      }
+
+      const resultado = await respuesta.json();
+      console.log("Backend conectado correctamente:", resultado);
+
+    } catch (error) {
+      console.error("No se pudo conectar con el backend:", error);
     }
-  });
+  }
+
+  probarBackend();
+
+  /*
+    =====================================================
+    FORMULARIO DE AGENDA
+    Envía los datos desde Netlify hacia Railway
+    =====================================================
+  */
+
+  if (appointmentForm) {
+    appointmentForm.addEventListener("submit", async function(event) {
+      event.preventDefault();
+
+      const formData = {
+        service: document.getElementById("service").value.trim(),
+        modality: document.getElementById("modality").value.trim(),
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        datetime: document.getElementById("datetime").value.trim(),
+        reason: document.getElementById("reason").value.trim()
+      };
+
+      const isValid =
+        formData.service &&
+        formData.modality &&
+        formData.name &&
+        formData.email &&
+        formData.phone &&
+        formData.datetime;
+
+      if (!isValid) {
+        mostrarError("Parece que falta algo aquí. Revisa los campos obligatorios.");
+        return;
+      }
+
+      mostrarExito("Enviando solicitud...");
+
+      try {
+        const respuesta = await fetch(`${API_URL}/api/citas`, {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        let resultado = {};
+
+        try {
+          resultado = await respuesta.json();
+        } catch (jsonError) {
+          console.warn("La respuesta no vino en JSON:", jsonError);
+        }
+
+        if (!respuesta.ok) {
+          throw new Error(resultado.error || `Error HTTP ${respuesta.status}`);
+        }
+
+        console.log("Solicitud enviada correctamente:", resultado);
+
+        mostrarExito("¡Listo! Te contactaremos pronto.");
+
+        appointmentForm.reset();
+
+        showSuccessModal();
+
+      } catch (error) {
+        console.error("Error al enviar la solicitud:", error);
+
+        mostrarError(
+          "No se pudo enviar la solicitud. Intenta nuevamente o escribe por WhatsApp."
+        );
+      }
+    });
+  }
 </script>
-</body>
-</html>
