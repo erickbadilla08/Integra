@@ -2313,8 +2313,8 @@
     const API_URL = "https://integra-production.up.railway.app";
   */
 
-  const API_URL = "integra-production-75f9.up.railway.app";
-
+ const API_URL = "https://integra-production-75f9.up.railway.app";
+  
   const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
   const appointmentForm = document.getElementById("appointmentForm");
@@ -2413,7 +2413,7 @@
     successAlert.classList.remove("show");
 
     try {
-      const respuesta = await fetch(`${API_URL}/api/citas`, {
+      const respuesta = await fetch(`https://integra-production-75f9.up.railway.app/api/citas`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
